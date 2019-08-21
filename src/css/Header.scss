@@ -1,0 +1,22 @@
+@import 'variables.scss';
+
+.headline {
+  font-size: 64px;
+  margin: 10px 0;
+}
+
+.separator {
+  border: 0;
+  border-top: 1px solid $color-white;
+  border-color: $color-grey;
+  width: 80%;
+}
+
+.subheading {
+  font-size: 24px;
+
+  sup {
+    font-size: 75%;
+    line-height: 0;
+  }
+}
