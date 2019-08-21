@@ -1,12 +1,14 @@
 import { hot } from 'react-hot-loader';
 import React, { Component } from 'react';
+import '../css/Contact.scss';
 
 class Contact extends Component {
   render() {
     return (
-      <>
-        <p>Contact Me:</p>
+      <div className="contact">
         <p>
+          Contact Me:
+          <br />
           <a href="http://twitter.com/#!/stevospinks/" target="_blank" rel="noopener noreferrer">
             Twitter
           </a>
@@ -19,7 +21,7 @@ class Contact extends Component {
             LinkedIn
           </a>
         </p>
-      </>
+      </div>
     );
   }
 }

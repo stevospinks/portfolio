@@ -13,3 +13,10 @@
   -ms-transform: $property;
   transform: $property;
 }
+
+@mixin background-size($property) {
+  -webkit-background-size: $property;
+  -moz-background-size: $property;
+  -o-background-size: $property;
+  background-size: $property;
+}
