@@ -1,12 +1,9 @@
 import { hot } from 'react-hot-loader';
 import React, { Component } from 'react';
 import Header from './Header.js';
-import ProjectOverview from './ProjectOverview.js';
+import Projects from './Projects.js';
 import Contact from './Contact.js';
-
 import '../css/App.scss';
-
-import projectData from '../data/projects.json';
 
 class App extends Component {
   render() {
@@ -15,11 +12,7 @@ class App extends Component {
         <div className="bgimg" />
         <div className="container">
           <Header />
-          <div className="projects">
-            {projectData.map(project => (
-              <ProjectOverview key={project.id} data={project} />
-            ))}
-          </div>
+          <Projects />
           <Contact />
         </div>
       </>

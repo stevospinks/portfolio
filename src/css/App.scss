@@ -33,13 +33,6 @@ body {
   padding: 5% 25% 0 25%;
 }
 
-.projects {
-  width: 100%;
-  @include display-flex();
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 p {
   font-size: 18px;
 

@@ -30,6 +30,10 @@ module.exports = {
       {
         from: 'src/images/project-images',
         to: 'project-images'
+      },
+      {
+        from: 'src/data/projects.json',
+        to: 'data/projects.json'
       }
     ])
   ],

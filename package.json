@@ -7,8 +7,7 @@
     "prestart": "start \"\" \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" \"http://localhost:3000\"",
     "start": "webpack-dev-server --config webpack.config.dev.js --port 3000",
     "prebuild": "rimraf ./build && mkdir build",
-    "build": "webpack --config webpack.config.prod.js",
-    "postbuild": "start \"\" \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" \".\\build\\index.html\""
+    "build": "webpack --config webpack.config.prod.js && start \"\" \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" \"http://localhost:3001\" && http-server ./build -p 3001"
   },
   "repository": {
     "type": "git",
@@ -30,6 +29,7 @@
     "eslint-plugin-react": "^7.14.3",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.9.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
