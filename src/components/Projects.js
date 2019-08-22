@@ -29,9 +29,7 @@ class Projects extends Component {
   renderLoading() {
     return (
       <div className="projects">
-        <div>
-          <Loader text="Loading projects..." />
-        </div>
+        <Loader text="Loading projects..." />
       </div>
     );
   }
