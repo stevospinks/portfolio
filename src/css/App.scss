@@ -35,13 +35,9 @@ body {
 
 .projects {
   width: 100%;
-
-  td {
-    border-width: 1px;
-    border-style: solid;
-    border-color: $color-white;
-    width: 50%;
-  }
+  @include display-flex();
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 p {

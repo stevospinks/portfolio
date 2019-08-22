@@ -1,3 +1,14 @@
+@import 'variables.scss';
+
+.projectContainer {
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color-white;
+  width: 49%;
+  box-sizing: border-box;
+  margin: 0.5%;
+}
+
 .imageContainer {
   padding: 0 10%;
 

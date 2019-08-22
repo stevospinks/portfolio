@@ -20,3 +20,11 @@
   -o-background-size: $property;
   background-size: $property;
 }
+
+@mixin display-flex() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
