@@ -5,12 +5,13 @@ import '../css/ProjectOverview.scss';
 
 class ProjectOverview extends Component {
   static propTypes = {
-    data: PropTypes.object
+    data: PropTypes.object,
+    onClick: PropTypes.func
   };
 
   render() {
     return (
-      <div className="projectContainer">
+      <div className="projectContainer" onClick={() => this.props.onClick(this.props.data)}>
         <p>{this.props.data.name}</p>
         <div className="imageContainer">
           <img src={this.props.data.imageSource} />

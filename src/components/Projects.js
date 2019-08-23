@@ -1,10 +1,15 @@
 import { hot } from 'react-hot-loader';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ProjectOverview from './ProjectOverview.js';
 import Loader from './Loader.js';
 import '../css/Projects.scss';
 
 class Projects extends Component {
+  static propTypes = {
+    setProject: PropTypes.func
+  };
+
   componentDidMount() {
     const self = this;
     var timerId = setTimeout(() => self.setState({ status: 'failed' }), 5000);
@@ -23,7 +28,7 @@ class Projects extends Component {
     return (
       <div className="projects">
         {this.state.projectData.map(project => (
-          <ProjectOverview key={project.id} data={project} />
+          <ProjectOverview key={project.id} data={project} onClick={this.props.setProject} />
         ))}
       </div>
     );
