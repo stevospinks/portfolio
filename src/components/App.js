@@ -36,7 +36,7 @@ class App extends Component {
       <>
         <div className="bgimg" />
         <div className="container">
-          <Header />
+          <Header subheading={this.state.projectToDisplay.name} />
           <Project data={this.state.projectToDisplay} goBack={() => this.setProjectToDisplay(undefined)} />
           <Contact />
         </div>
@@ -45,7 +45,8 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.projectToDisplay) {
+    window.scrollTo(0, 0);
+    if (this.state.projectToDisplay && this.state.projectToDisplay.clickable) {
       return this.renderProject();
     }
     return this.renderHomepage();
