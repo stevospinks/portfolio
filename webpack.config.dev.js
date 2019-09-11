@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 process.env.NODE_ENV = 'development';
 
@@ -17,15 +18,24 @@ module.exports = {
   devServer: {
     stats: 'minimal',
     overlay: true,
-    historyApiFallback: true /*,
-    hotOnly: true*/
+    historyApiFallback: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       favicon: 'src/favicon.ico'
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/images/project-images',
+        to: 'project-images'
+      },
+      {
+        from: 'src/data/projects.json',
+        to: 'data/projects.json'
+      }
+    ])
   ],
   module: {
     rules: [
@@ -44,12 +54,11 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 66000
+              limit: 8192 // 8kb
             }
           }
         ]
       }
     ]
   }
-  //resolve: { extensions: ['*', '.js', '.jsx'] }
 };
