@@ -50,6 +50,10 @@ module.exports = {
       {
         from: 'src/data/projects.json',
         to: 'data/projects.json'
+      },
+      {
+        from: 'src/.htaccess',
+        to: ''
       }
     ])
   ],
