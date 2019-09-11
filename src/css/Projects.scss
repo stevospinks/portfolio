@@ -1,0 +1,8 @@
+@import 'mixins.scss';
+
+.projects {
+  width: 100%;
+  @include display-flex();
+  flex-wrap: wrap;
+  justify-content: center;
+}

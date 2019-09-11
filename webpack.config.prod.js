@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpackBundleAnalyzer = require('webpack-bundle-analyzer');
 
@@ -40,7 +41,21 @@ module.exports = {
         minifyCSS: true,
         minifyURLs: true
       }
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/images/project-images',
+        to: 'project-images'
+      },
+      {
+        from: 'src/data/projects.json',
+        to: 'data/projects.json'
+      },
+      {
+        from: 'src/.htaccess',
+        to: ''
+      }
+    ])
   ],
   module: {
     rules: [
@@ -51,6 +66,7 @@ module.exports = {
       },
       {
         test: /\.(s*)css$/,
+        exclude: /(node_modules)/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -76,11 +92,12 @@ module.exports = {
       },
       {
         test: /\.(png|jp(e*)g)$/,
+        exclude: /(node_modules)/,
         use: [
           {
             loader: 'url-loader',
             options: {
-              limit: 66000
+              limit: 8192 // 8kb
             }
           }
         ]
