@@ -11,13 +11,13 @@ module.exports = {
   target: 'web',
   devtool: 'cheap-module-source-map',
   entry: './src/index.js',
+  stats: 'minimal',
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/', // public url of output directory when referenced in the browser
     filename: 'bundle.js'
   },
   devServer: {
-    stats: 'minimal',
     overlay: true,
     historyApiFallback: true
   },
