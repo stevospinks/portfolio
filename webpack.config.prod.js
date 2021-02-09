@@ -3,7 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpackBundleAnalyzer = require('webpack-bundle-analyzer');
+const WebpackBundleAnalyzer = require('webpack-bundle-analyzer');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 process.env.NODE_ENV = 'production';
 
@@ -18,7 +19,7 @@ module.exports = {
     filename: 'bundle.[contenthash].js'
   },
   plugins: [
-    new webpackBundleAnalyzer.BundleAnalyzerPlugin({ analyzerMode: 'static' }),
+    new WebpackBundleAnalyzer.BundleAnalyzerPlugin({ analyzerMode: 'static' }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
     }),
@@ -48,14 +49,15 @@ module.exports = {
         { from: 'src/data/projects.json', to: 'data/projects.json' },
         { from: 'src/.htaccess', to: '' }
       ]
-    })
+    }),
+    new ESLintPlugin()
   ],
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
-        use: ['babel-loader', 'eslint-loader']
+        use: ['babel-loader']
       },
       {
         test: /\.(s*)css$/,
