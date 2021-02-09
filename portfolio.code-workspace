@@ -8,10 +8,12 @@
     "editor.renderWhitespace": "all",
     "editor.formatOnSave": true,
     "files.trimTrailingWhitespace": true,
-    "eslint.autoFixOnSave": true,
     "prettier.eslintIntegration": true,
     "prettier.printWidth": 120,
     "prettier.quoteProps": "consistent",
-    "prettier.singleQuote": true
+    "prettier.singleQuote": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
   }
 }

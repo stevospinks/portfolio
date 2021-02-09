@@ -1,14 +1,14 @@
 import { hot } from 'react-hot-loader';
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import '../css/ProjectOverview.scss';
+import { ProjectInfo } from '../data/interfaces';
 
-class ProjectOverview extends Component {
-  static propTypes = {
-    data: PropTypes.object,
-    onClick: PropTypes.func
-  };
+interface Props {
+  onClick: (data: ProjectInfo) => void,
+  data: ProjectInfo,
+}
 
+class ProjectOverview extends React.Component<Props> {
   render() {
     return (
       <div className="projectContainer" onClick={() => this.props.onClick(this.props.data)}>

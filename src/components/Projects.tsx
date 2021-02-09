@@ -1,18 +1,22 @@
 import { hot } from 'react-hot-loader';
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import ProjectOverview from './ProjectOverview.js';
-import Loader from './Loader.js';
+import React from 'react';
+import ProjectOverview from './ProjectOverview';
+import Loader from './Loader';
 import '../css/Projects.scss';
+import { ProjectInfo } from '../data/interfaces';
 
-class Projects extends Component {
-  static propTypes = {
-    setProject: PropTypes.func
-  };
+interface Props {
+  setProject: (data: ProjectInfo) => void
+}
 
+interface State {
+  projectData: ProjectInfo[]
+  status: string
+}
+
+class Projects extends React.Component<Props, State> {
   componentDidMount() {
-    const self = this;
-    var timerId = setTimeout(() => self.setState({ status: 'failed' }), 5000);
+    const timerId = setTimeout(() => this.setState({ status: 'failed' }), 5000);
 
     fetch('./data/projects.json')
       .then(response => {
@@ -20,7 +24,7 @@ class Projects extends Component {
       })
       .then(data => {
         clearTimeout(timerId);
-        self.setState({ status: 'complete', projectData: data });
+        this.setState({ status: 'complete', projectData: data });
       });
   }
 

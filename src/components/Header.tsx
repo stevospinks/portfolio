@@ -1,13 +1,12 @@
 import { hot } from 'react-hot-loader';
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import '../css/Header.scss';
 
-class Contact extends Component {
-  static propTypes = {
-    subheading: PropTypes.string
-  };
+interface Props {
+  subheading?: string;
+}
 
+class Header extends React.Component<Props> {
   render() {
     return (
       <>
@@ -25,4 +24,4 @@ class Contact extends Component {
   }
 }
 
-export default hot(module)(Contact);
+export default hot(module)(Header);
