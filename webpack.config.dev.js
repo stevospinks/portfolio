@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 process.env.NODE_ENV = 'development';
 
@@ -10,13 +11,13 @@ module.exports = {
   target: 'web',
   devtool: 'cheap-module-source-map',
   entry: './src/index.js',
+  stats: 'minimal',
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/', // public url of output directory when referenced in the browser
     filename: 'bundle.js'
   },
   devServer: {
-    stats: 'minimal',
     overlay: true,
     historyApiFallback: true
   },
@@ -26,23 +27,20 @@ module.exports = {
       template: 'src/index.html',
       favicon: 'src/favicon.ico'
     }),
-    new CopyWebpackPlugin([
-      {
-        from: 'src/images/project-images',
-        to: 'project-images'
-      },
-      {
-        from: 'src/data/projects.json',
-        to: 'data/projects.json'
-      }
-    ])
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/images/project-images', to: 'project-images' },
+        { from: 'src/data/projects.json', to: 'data/projects.json' }
+      ]
+    }),
+    new ESLintPlugin()
   ],
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
-        use: ['babel-loader', 'eslint-loader']
+        use: ['babel-loader']
       },
       {
         test: /\.(s*)css$/,

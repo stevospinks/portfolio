@@ -3,7 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpackBundleAnalyzer = require('webpack-bundle-analyzer');
+const WebpackBundleAnalyzer = require('webpack-bundle-analyzer');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 process.env.NODE_ENV = 'production';
 
@@ -18,7 +19,7 @@ module.exports = {
     filename: 'bundle.[contenthash].js'
   },
   plugins: [
-    new webpackBundleAnalyzer.BundleAnalyzerPlugin({ analyzerMode: 'static' }),
+    new WebpackBundleAnalyzer.BundleAnalyzerPlugin({ analyzerMode: 'static' }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
     }),
@@ -42,37 +43,28 @@ module.exports = {
         minifyURLs: true
       }
     }),
-    new CopyWebpackPlugin([
-      {
-        from: 'src/images/project-images',
-        to: 'project-images'
-      },
-      {
-        from: 'src/data/projects.json',
-        to: 'data/projects.json'
-      },
-      {
-        from: 'src/.htaccess',
-        to: ''
-      }
-    ])
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/images/project-images', to: 'project-images' },
+        { from: 'src/data/projects.json', to: 'data/projects.json' },
+        { from: 'src/.htaccess', to: '' }
+      ]
+    }),
+    new ESLintPlugin()
   ],
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
-        use: ['babel-loader', 'eslint-loader']
+        use: ['babel-loader']
       },
       {
         test: /\.(s*)css$/,
         exclude: /(node_modules)/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: false
-            }
+            loader: MiniCssExtractPlugin.loader
           },
           {
             loader: 'css-loader',
@@ -83,11 +75,20 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [require('cssnano')],
-              sourceMap: true
+              sourceMap: true,
+              postcssOptions: {
+                plugins: [
+                  require.resolve('cssnano')
+                ],
+              }
             }
           },
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
         ]
       },
       {
