@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssnanoPlugin = require('cssnano-webpack-plugin')
 const webpackBundleAnalyzer = require('webpack-bundle-analyzer');
 
 process.env.NODE_ENV = 'production';
@@ -22,9 +21,6 @@ module.exports = {
     new webpackBundleAnalyzer.BundleAnalyzerPlugin({ analyzerMode: 'static' }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
-    }),
-    new CssnanoPlugin({
-      sourceMap: true
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) // This global makes sure React is built in prod mode.
@@ -77,7 +73,12 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              sourceMap: true
+              sourceMap: true,
+              postcssOptions: {
+                plugins: [
+                  require.resolve('cssnano')
+                ],
+              }
             }
           },
           {
