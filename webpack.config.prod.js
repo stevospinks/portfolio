@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssnanoPlugin = require('cssnano-webpack-plugin')
 const webpackBundleAnalyzer = require('webpack-bundle-analyzer');
 
 process.env.NODE_ENV = 'production';
@@ -21,6 +22,9 @@ module.exports = {
     new webpackBundleAnalyzer.BundleAnalyzerPlugin({ analyzerMode: 'static' }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
+    }),
+    new CssnanoPlugin({
+      sourceMap: true
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) // This global makes sure React is built in prod mode.
@@ -42,20 +46,13 @@ module.exports = {
         minifyURLs: true
       }
     }),
-    new CopyWebpackPlugin([
-      {
-        from: 'src/images/project-images',
-        to: 'project-images'
-      },
-      {
-        from: 'src/data/projects.json',
-        to: 'data/projects.json'
-      },
-      {
-        from: 'src/.htaccess',
-        to: ''
-      }
-    ])
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/images/project-images', to: 'project-images' },
+        { from: 'src/data/projects.json', to: 'data/projects.json' },
+        { from: 'src/.htaccess', to: '' }
+      ]
+    })
   ],
   module: {
     rules: [
@@ -69,10 +66,7 @@ module.exports = {
         exclude: /(node_modules)/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: false
-            }
+            loader: MiniCssExtractPlugin.loader
           },
           {
             loader: 'css-loader',
@@ -83,11 +77,15 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [require('cssnano')],
               sourceMap: true
             }
           },
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
         ]
       },
       {

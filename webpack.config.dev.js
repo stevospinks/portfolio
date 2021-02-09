@@ -26,16 +26,12 @@ module.exports = {
       template: 'src/index.html',
       favicon: 'src/favicon.ico'
     }),
-    new CopyWebpackPlugin([
-      {
-        from: 'src/images/project-images',
-        to: 'project-images'
-      },
-      {
-        from: 'src/data/projects.json',
-        to: 'data/projects.json'
-      }
-    ])
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/images/project-images', to: 'project-images' },
+        { from: 'src/data/projects.json', to: 'data/projects.json' }
+      ]
+    })
   ],
   module: {
     rules: [
