@@ -1,38 +1,39 @@
-import { hot } from 'react-hot-loader';
 import React from 'react';
-import ProjectOverview from './ProjectOverview';
-import Loader from './Loader';
+import { hot } from 'react-hot-loader';
 import '../css/Projects.scss';
-import { ProjectInfo } from '../data/interfaces';
+import { Project } from '../interfaces/project';
+import Loader from './Loader';
+import ProjectOverview from './ProjectOverview';
 
 interface Props {
-  setProject: (data: ProjectInfo) => void
+  setProject: (project: Project) => void;
 }
 
 interface State {
-  projectData: ProjectInfo[]
-  status: string
+  projects: Project[];
+  loadComplete: boolean;
+  errorDuringLoad: boolean;
 }
 
 class Projects extends React.Component<Props, State> {
   componentDidMount() {
-    const timerId = setTimeout(() => this.setState({ status: 'failed' }), 5000);
-
-    fetch('./data/projects.json')
-      .then(response => {
+    this.setState({ loadComplete: false });
+    const timerId = setTimeout(() => this.setState({ loadComplete: true, errorDuringLoad: true }), 5000);
+    void fetch('./data/projects.json')
+      .then((response: Response) => {
         return response.json();
       })
-      .then(data => {
+      .then((projects: Project[]) => {
         clearTimeout(timerId);
-        this.setState({ status: 'complete', projectData: data });
+        this.setState({ loadComplete: true, errorDuringLoad: false, projects: projects });
       });
   }
 
-  renderData() {
+  renderProjects() {
     return (
-      <div className="projects">
-        {this.state.projectData.map(project => (
-          <ProjectOverview key={project.id} data={project} onClick={this.props.setProject} />
+      <div className='projects'>
+        {this.state.projects.map((project) => (
+          <ProjectOverview key={project.id} project={project} onClick={this.props.setProject} />
         ))}
       </div>
     );
@@ -40,34 +41,34 @@ class Projects extends React.Component<Props, State> {
 
   renderLoading() {
     return (
-      <div className="projects">
-        <Loader text="Loading projects..." />
+      <div className='projects'>
+        <Loader text='Loading projects...' />
       </div>
     );
   }
 
   renderError() {
     return (
-      <div className="projects">
+      <div className='projects'>
         <p>Something went wrong, please try again later.</p>
       </div>
     );
   }
 
   render() {
-    if (this.state && this.state.projectData && this.state.projectData.length > 0) {
-      return this.renderData();
-    }
-
-    if (
-      this.state &&
-      (this.state.status === 'failed' ||
-        (this.state.status === 'complete' && this.state.projectData && this.state.projectData.length === 0))
-    ) {
+    if (!this.state) {
       return this.renderError();
     }
 
-    return this.renderLoading();
+    if (!this.state.loadComplete) {
+      return this.renderLoading();
+    }
+
+    if (this.state.errorDuringLoad || this.state.projects.length === 0) {
+      return this.renderError();
+    }
+
+    return this.renderProjects();
   }
 }
 

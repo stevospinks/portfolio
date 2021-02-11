@@ -1,27 +1,28 @@
-import { hot } from 'react-hot-loader';
 import React from 'react';
-import '../css/Project.scss';
-import { ProjectInfo } from '../data/interfaces';
+import { hot } from 'react-hot-loader';
+import '../css/ProjectDetails.scss';
+import { EmptyState } from '../interfaces/empty';
+import { Project } from '../interfaces/project';
 
 interface Props {
-  project: ProjectInfo
-  goBack: () => void
+  project: Project;
+  goBack: () => void;
 }
 
-class Project extends React.Component<Props> {
+class ProjectDetails extends React.Component<Props, EmptyState> {
   render() {
     return (
       <>
         <p>{this.props.project.details}</p>
-        <div className="youtube">
+        <div className='youtube'>
           <iframe
             hidden={this.props.project.videoSource === ''}
-            frameBorder="0"
-            scrolling="no"
+            frameBorder='0'
+            scrolling='no'
             marginHeight={0}
             marginWidth={0}
-            width="560"
-            height="315"
+            width='560'
+            height='315'
             allowFullScreen
             src={'https://www.youtube.com/embed/' + this.props.project.videoSource + '?modestbranding=1&rel=0'}
           />
@@ -32,4 +33,4 @@ class Project extends React.Component<Props> {
   }
 }
 
-export default hot(module)(Project);
+export default hot(module)(ProjectDetails);

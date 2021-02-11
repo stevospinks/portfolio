@@ -1,18 +1,19 @@
-import { hot } from 'react-hot-loader';
 import React from 'react';
-import Header from './Header';
-import Projects from './Projects';
-import Project from './Project';
-import Contact from './Contact';
+import { hot } from 'react-hot-loader';
 import '../css/App.scss';
-import { ProjectInfo } from '../data/interfaces';
+import { EmptyProps } from '../interfaces/empty';
+import { Project } from '../interfaces/project';
+import Contact from './Contact';
+import Header from './Header';
+import ProjectDetails from './ProjectDetails';
+import Projects from './Projects';
 
 interface State {
-  projectToDisplay?: ProjectInfo
+  projectToDisplay?: Project;
 }
 
-class App extends React.Component<unknown, State> {
-  setProjectToDisplay(project: ProjectInfo) {
+class App extends React.Component<EmptyProps, State> {
+  setProjectToDisplay(project: Project) {
     this.setState({ projectToDisplay: project });
   }
 
@@ -23,23 +24,23 @@ class App extends React.Component<unknown, State> {
   renderHomepage() {
     return (
       <>
-        <div className="bgimg" />
-        <div className="container">
+        <div className='bgimg' />
+        <div className='container'>
           <Header />
-          <Projects setProject={project => this.setProjectToDisplay(project)} />
+          <Projects setProject={(project) => this.setProjectToDisplay(project)} />
           <Contact />
         </div>
       </>
     );
   }
 
-  renderProject(project: ProjectInfo) {
+  renderProject(project: Project) {
     return (
       <>
-        <div className="bgimg" />
-        <div className="container">
+        <div className='bgimg' />
+        <div className='container'>
           <Header subheading={project.name} />
-          <Project project={project} goBack={() => this.clearProject()} />
+          <ProjectDetails project={project} goBack={() => this.clearProject()} />
           <Contact />
         </div>
       </>
@@ -48,7 +49,7 @@ class App extends React.Component<unknown, State> {
 
   render() {
     window.scrollTo(0, 0);
-    if (!this.state?.projectToDisplay || !this.state.projectToDisplay.clickable) {
+    if (!this.state?.projectToDisplay?.clickable) {
       return this.renderHomepage();
     }
 

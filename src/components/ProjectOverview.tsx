@@ -1,22 +1,23 @@
-import { hot } from 'react-hot-loader';
 import React from 'react';
+import { hot } from 'react-hot-loader';
 import '../css/ProjectOverview.scss';
-import { ProjectInfo } from '../data/interfaces';
+import { EmptyState } from '../interfaces/empty';
+import { Project } from '../interfaces/project';
 
 interface Props {
-  onClick: (data: ProjectInfo) => void,
-  data: ProjectInfo,
+  onClick: (project: Project) => void;
+  project: Project;
 }
 
-class ProjectOverview extends React.Component<Props> {
+class ProjectOverview extends React.Component<Props, EmptyState> {
   render() {
     return (
-      <div className="projectContainer" onClick={() => this.props.onClick(this.props.data)}>
-        <p>{this.props.data.name}</p>
-        <div className="imageContainer">
-          <img src={this.props.data.imageSource} />
+      <div className='projectContainer' onClick={() => this.props.onClick(this.props.project)}>
+        <p>{this.props.project.name}</p>
+        <div className='imageContainer'>
+          <img src={this.props.project.imageSource} />
         </div>
-        <p>{this.props.data.blurb}</p>
+        <p>{this.props.project.blurb}</p>
       </div>
     );
   }
