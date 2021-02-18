@@ -21,39 +21,24 @@ class App extends React.Component<EmptyProps, State> {
     this.setState({ projectToDisplay: undefined });
   }
 
-  renderHomepage() {
+  render() {
+    window.scrollTo(0, 0);
+
+    const displayProject = this.state?.projectToDisplay?.clickable ?? false;
     return (
       <>
         <div className='bgimg' />
         <div className='container'>
           <Header />
-          <Projects setProject={(project) => this.setProjectToDisplay(project)} />
+          {displayProject ? (
+            <ProjectDetails project={this.state.projectToDisplay!} goBack={() => this.clearProject()} />
+          ) : (
+            <Projects setProject={(project) => this.setProjectToDisplay(project)} />
+          )}
           <Contact />
         </div>
       </>
     );
-  }
-
-  renderProject(project: Project) {
-    return (
-      <>
-        <div className='bgimg' />
-        <div className='container'>
-          <Header subheading={project.name} />
-          <ProjectDetails project={project} goBack={() => this.clearProject()} />
-          <Contact />
-        </div>
-      </>
-    );
-  }
-
-  render() {
-    window.scrollTo(0, 0);
-    if (!this.state?.projectToDisplay?.clickable) {
-      return this.renderHomepage();
-    }
-
-    return this.renderProject(this.state.projectToDisplay);
   }
 }
 
