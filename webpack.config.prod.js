@@ -12,7 +12,7 @@ module.exports = {
   mode: 'production',
   target: 'web',
   devtool: 'source-map',
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '', // public url of output directory when referenced in the browser
@@ -50,14 +50,28 @@ module.exports = {
         { from: 'src/.htaccess', to: '' }
       ]
     }),
-    new ESLintPlugin()
+    new ESLintPlugin({
+      extensions: ["js", "jsx", "ts", "tsx"],
+    })
   ],
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /(node_modules)/,
-        use: ['babel-loader']
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-typescript",
+            ],
+          },
+        },
       },
       {
         test: /\.(s*)css$/,

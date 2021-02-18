@@ -5,13 +5,12 @@
     }
   ],
   "settings": {
-    "editor.renderWhitespace": "all",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.organizeImports": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
-    "files.trimTrailingWhitespace": true,
-    "eslint.autoFixOnSave": true,
-    "prettier.eslintIntegration": true,
-    "prettier.printWidth": 120,
-    "prettier.quoteProps": "consistent",
-    "prettier.singleQuote": true
+    "editor.renderWhitespace": "all"
   }
 }
