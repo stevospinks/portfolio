@@ -10,7 +10,7 @@ class Contact extends React.Component<EmptyProps, EmptyState> {
         <p>
           Contact Me:
           <br />
-          <a href='http://twitter.com/#!/stevospinks/' target='_blank' rel='noopener noreferrer'>
+          <a href='https://twitter.com/stevospinks/' target='_blank' rel='noopener noreferrer'>
             Twitter
           </a>
           {' | '}
@@ -18,7 +18,7 @@ class Contact extends React.Component<EmptyProps, EmptyState> {
             Direct E-mail
           </a>
           {' | '}
-          <a href='http://uk.linkedin.com/in/stephenspinks' target='_blank' rel='noopener noreferrer'>
+          <a href='https://www.linkedin.com/in/stephenspinks' target='_blank' rel='noopener noreferrer'>
             LinkedIn
           </a>
         </p>
