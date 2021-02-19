@@ -1,0 +1,35 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.youtube-container {
+  overflow: hidden;
+  background: $color-black;
+  margin: 0 auto;
+  @include display-flex();
+  justify-content: center;
+  align-items: center;
+
+  iframe {
+    width: 100%;
+    z-index: 100;
+    background: transparent;
+  }
+
+  img {
+    width: 100%;
+    cursor: pointer;
+    @include transition(0.4s all);
+
+    &:hover {
+      @include filter(brightness(75%));
+    }
+  }
+
+  .play-button {
+    height: 72px;
+    width: 72px;
+    position: absolute;
+    background: url('//i.imgur.com/TxzC70f.png') no-repeat;
+    cursor: pointer;
+  }
+}
