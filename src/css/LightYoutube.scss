@@ -8,6 +8,12 @@
   @include display-flex();
   justify-content: center;
   align-items: center;
+  color: $color-youtube-play;
+  @include transition(0.3s all);
+
+  &:hover {
+    color: $color-youtube-play-hover;
+  }
 
   iframe {
     width: 100%;
@@ -18,18 +24,18 @@
   img {
     width: 100%;
     cursor: pointer;
-    @include transition(0.4s all);
-
-    &:hover {
-      @include filter(brightness(75%));
-    }
   }
 
   .play-button {
-    height: 72px;
-    width: 72px;
+    font-size: 72px;
     position: absolute;
-    background: url('//i.imgur.com/TxzC70f.png') no-repeat;
+    cursor: pointer;
+  }
+
+  .play-button-centre {
+    color: white;
+    font-size: 42px;
+    position: absolute;
     cursor: pointer;
   }
 }

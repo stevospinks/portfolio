@@ -1,5 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import { FaYoutube } from 'react-icons/fa';
+import { MdPlayArrow } from 'react-icons/md';
 import '../css/LightYoutube.scss';
 
 interface Props {
@@ -40,11 +42,9 @@ class LightYoutube extends React.Component<Props, State> {
   displayLightYoutube() {
     return (
       <>
-        <img
-          src={'https://i.ytimg.com/vi/' + this.props.videoId + '/hqdefault.jpg'}
-          onClick={() => this.showVideo()}
-        ></img>
-        <div className='play-button' onClick={() => this.showVideo()}></div>
+        <img src={'https://i.ytimg.com/vi/' + this.props.videoId + '/hqdefault.jpg'}></img>
+        <FaYoutube className='play-button' />
+        <MdPlayArrow className='play-button-centre' />
       </>
     );
   }
@@ -55,7 +55,11 @@ class LightYoutube extends React.Component<Props, State> {
     }
 
     return (
-      <div className='youtube-container' style={{ width: this.props.width, height: this.props.height }}>
+      <div
+        className='youtube-container'
+        style={{ width: this.props.width, height: this.props.height }}
+        onClick={() => this.showVideo()}
+      >
         {this.state.loadVideo ? this.displayFullYoutube() : this.displayLightYoutube()}
       </div>
     );
