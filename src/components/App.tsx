@@ -21,20 +21,33 @@ class App extends React.Component<EmptyProps, State> {
     this.setState({ projectToDisplay: undefined });
   }
 
+  displayAllProjects() {
+    return (
+      <>
+        <Header />
+        <Projects setProject={(project) => this.setProjectToDisplay(project)} />{' '}
+      </>
+    );
+  }
+
+  displaySingleProject(project: Project) {
+    return (
+      <>
+        <Header subheading={project.name} />
+        <ProjectDetails project={project} goBack={() => this.clearProject()} />
+      </>
+    );
+  }
+
   render() {
     window.scrollTo(0, 0);
-
     const displayProject = this.state?.projectToDisplay?.clickable ?? false;
+
     return (
       <>
         <div className='bgimg' />
         <div className='container'>
-          <Header />
-          {displayProject ? (
-            <ProjectDetails project={this.state.projectToDisplay!} goBack={() => this.clearProject()} />
-          ) : (
-            <Projects setProject={(project) => this.setProjectToDisplay(project)} />
-          )}
+          {displayProject ? this.displaySingleProject(this.state.projectToDisplay!) : this.displayAllProjects()}
           <Contact />
         </div>
       </>
