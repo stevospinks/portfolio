@@ -1,0 +1,41 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.youtube-container {
+  overflow: hidden;
+  background: $color-black;
+  margin: 0 auto;
+  @include display-flex();
+  justify-content: center;
+  align-items: center;
+  color: $color-youtube-play;
+  @include transition(0.3s all);
+
+  &:hover {
+    color: $color-youtube-play-hover;
+  }
+
+  iframe {
+    width: 100%;
+    z-index: 100;
+    background: transparent;
+  }
+
+  img {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .play-button {
+    font-size: 72px;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  .play-button-centre {
+    color: white;
+    font-size: 42px;
+    position: absolute;
+    cursor: pointer;
+  }
+}
