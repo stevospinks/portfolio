@@ -10,7 +10,7 @@ module.exports = {
   mode: 'development',
   target: 'web',
   devtool: 'cheap-module-source-map',
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   stats: 'minimal',
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -33,14 +33,28 @@ module.exports = {
         { from: 'src/data/projects.json', to: 'data/projects.json' }
       ]
     }),
-    new ESLintPlugin()
+    new ESLintPlugin({
+      extensions: ["js", "jsx", "ts", "tsx"],
+    })
   ],
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /(node_modules)/,
-        use: ['babel-loader']
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-typescript",
+            ],
+          },
+        },
       },
       {
         test: /\.(s*)css$/,
