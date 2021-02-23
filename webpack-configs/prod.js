@@ -4,8 +4,8 @@ const WebpackBundleAnalyzer = require('webpack-bundle-analyzer');
 
 process.env.NODE_ENV = 'production';
 
-function buildConfig(configDirs) {
-  var config = require('./common.js')(configDirs);
+function buildConfig(directories) {
+  var config = require('./common.js')(directories);
 
   config.mode = 'production';
   config.devtool = 'source-map';
@@ -23,7 +23,7 @@ function buildConfig(configDirs) {
 
   config.module.rules.push({
     test: /\.(s*)css$/,
-    include: configDirs.APP_DIR,
+    include: directories.app,
     use: [
       {
         loader: MiniCssExtractPlugin.loader

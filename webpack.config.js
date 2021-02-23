@@ -1,13 +1,7 @@
 var path = require('path');
-var BUILD_DIR = path.resolve(__dirname, './build');
-var APP_DIR = path.resolve(__dirname, './src');
-
-const configDirs = {
-  BUILD_DIR: BUILD_DIR,
-  APP_DIR: APP_DIR
-};
 
 function buildConfig(args) {
+  let configName;
   if (args.dev) {
     configName = 'dev';
   } else if (args.prod) {
@@ -17,8 +11,11 @@ function buildConfig(args) {
     return;
   }
 
-  var config = require('./webpack-configs/' + configName + '.js')(configDirs);
-  return config;
+  const directories = {
+    build: path.resolve(__dirname, './build'),
+    app: path.resolve(__dirname, './src')
+  };
+  return require('./webpack-configs/' + configName + '.js')(directories);
 }
 
 module.exports = buildConfig;

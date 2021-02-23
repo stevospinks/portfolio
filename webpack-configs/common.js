@@ -2,13 +2,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-function buildConfig(configDirs) {
+function buildConfig(directories) {
   return {
     target: 'web',
     entry: './src/index.tsx',
     output: {
       publicPath: '',
-      path: configDirs.BUILD_DIR,
+      path: directories.build,
       pathinfo: false
     },
     plugins: [
@@ -36,7 +36,7 @@ function buildConfig(configDirs) {
       rules: [
         {
           test: /\.(js|jsx|ts|tsx)$/,
-          include: configDirs.APP_DIR,
+          include: directories.app,
           use: {
             loader: 'babel-loader',
             options: {
@@ -46,7 +46,7 @@ function buildConfig(configDirs) {
         },
         {
           test: /\.(png|jp(e*)g)$/,
-          include: configDirs.APP_DIR,
+          include: directories.app,
           use: [
             {
               loader: 'url-loader',
