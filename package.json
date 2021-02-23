@@ -4,10 +4,10 @@
   "description": "Stephen's portfolio",
   "main": "index.tsx",
   "scripts": {
-    "prestart": "start \"\" \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" \"http://localhost:3000\"",
-    "start": "webpack serve --config webpack.config.dev.js --port 3000",
-    "prebuild": "rimraf ./build && mkdir build",
-    "build": "webpack --config webpack.config.prod.js && start \"\" \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" \"http://localhost:3001\" && http-server ./build -p 3001"
+    "prebuild:dev": "start \"\" \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" \"http://localhost:3000\"",
+    "build:dev": "webpack serve --env=dev --port 3000",
+    "prebuild:prod": "rimraf ./build && mkdir build",
+    "build:prod": "webpack --env=prod && start \"\" \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" \"http://localhost:3001\" && http-server ./build -p 3001"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,6 @@
   "devDependencies": {
     "@babel/core": "^7.12.13",
     "@babel/preset-typescript": "^7.12.13",
-    "@types/jest": "^26.0.20",
-    "@types/node": "^14.14.25",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.15.0",

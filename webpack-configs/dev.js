@@ -1,0 +1,34 @@
+const webpack = require('webpack');
+
+process.env.NODE_ENV = 'development';
+
+function buildConfig(configDirs) {
+  var config = require('./common.js')(configDirs);
+
+  config.mode = 'development';
+  config.devtool = 'eval-source-map';
+  config.stats = 'minimal';
+  config.output.filename = 'bundle.js';
+
+  config.devServer = {
+    overlay: true,
+    historyApiFallback: true
+  };
+
+  config.plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) // This global makes sure React is built in dev mode.
+    })
+  );
+
+  config.module.rules.push({
+    test: /\.(s*)css$/,
+    include: configDirs.APP_DIR,
+    use: ['style-loader', 'css-loader', 'sass-loader']
+  });
+
+  return config;
+}
+
+module.exports = buildConfig;
