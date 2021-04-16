@@ -1,5 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import { BrowserRouter, Route } from 'react-router-dom';
 import '../css/App.scss';
 import { EmptyProps } from '../interfaces/empty';
 import { Project } from '../interfaces/project';
@@ -25,7 +26,7 @@ class App extends React.Component<EmptyProps, State> {
     return (
       <>
         <Header />
-        <Projects setProject={(project) => this.setProjectToDisplay(project)} />{' '}
+        <Projects setProject={(project) => this.setProjectToDisplay(project)} />
       </>
     );
   }
@@ -47,7 +48,12 @@ class App extends React.Component<EmptyProps, State> {
       <>
         <div className='bgimg' />
         <div className='container'>
-          {displayProject ? this.displaySingleProject(this.state.projectToDisplay!) : this.displayAllProjects()}
+          <BrowserRouter>
+            <Route exact path='/'>
+              {this.displayAllProjects()}
+            </Route>
+          </BrowserRouter>
+          ,{displayProject ? this.displaySingleProject(this.state.projectToDisplay!) : this.displayAllProjects()}
           <Contact />
         </div>
       </>
