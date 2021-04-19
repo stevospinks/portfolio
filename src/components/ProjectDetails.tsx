@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 import { hot } from 'react-hot-loader';
 import '../css/ProjectDetails.scss';
 import { EmptyState } from '../interfaces/empty';
@@ -16,7 +17,9 @@ class ProjectDetails extends React.Component<Props, EmptyState> {
       <>
         <p>{this.props.project.details}</p>
         <LightYoutube videoId={this.props.project.videoSource} width={560} height={315} />
-        <button onClick={this.props.goBack}>Back</button>
+        <Button variant='outline-light' onClick={this.props.goBack}>
+          Back
+        </Button>
       </>
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 import { hot } from 'react-hot-loader';
 import '../css/App.scss';
 import { EmptyProps } from '../interfaces/empty';
@@ -25,7 +26,7 @@ class App extends React.Component<EmptyProps, State> {
     return (
       <>
         <Header />
-        <Projects setProject={(project) => this.setProjectToDisplay(project)} />{' '}
+        <Projects setProject={(project) => this.setProjectToDisplay(project)} />
       </>
     );
   }
@@ -44,13 +45,10 @@ class App extends React.Component<EmptyProps, State> {
     const displayProject = this.state?.projectToDisplay?.clickable ?? false;
 
     return (
-      <>
-        <div className='bgimg' />
-        <div className='container'>
-          {displayProject ? this.displaySingleProject(this.state.projectToDisplay!) : this.displayAllProjects()}
-          <Contact />
-        </div>
-      </>
+      <Container>
+        {displayProject ? this.displaySingleProject(this.state.projectToDisplay!) : this.displayAllProjects()}
+        <Contact />
+      </Container>
     );
   }
 }

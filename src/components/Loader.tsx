@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from 'react-bootstrap/Spinner';
 import { hot } from 'react-hot-loader';
 import '../css/Loader.scss';
 import { EmptyState } from '../interfaces/empty';
@@ -11,14 +12,8 @@ class Loader extends React.Component<Props, EmptyState> {
   render() {
     return (
       <>
-        <div className='loaderText'>
-          <p>{this.props.text}</p>
-        </div>
-        <div className='loader'>
-          <div />
-          <div />
-          <div />
-        </div>
+        <Spinner animation='border' variant='light' role='status' />
+        <div className='loaderText'>{this.props.text}</div>
       </>
     );
   }

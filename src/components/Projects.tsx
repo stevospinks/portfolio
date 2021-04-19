@@ -1,4 +1,5 @@
 import React from 'react';
+import Row from 'react-bootstrap/Row';
 import { hot } from 'react-hot-loader';
 import '../css/Projects.scss';
 import { Project } from '../interfaces/project';
@@ -31,28 +32,20 @@ class Projects extends React.Component<Props, State> {
 
   renderProjects() {
     return (
-      <div className='projects'>
+      <Row>
         {this.state.projects.map((project) => (
           <ProjectOverview key={project.id} project={project} onClick={this.props.setProject} />
         ))}
-      </div>
+      </Row>
     );
   }
 
   renderLoading() {
-    return (
-      <div className='projects'>
-        <Loader text='Loading projects...' />
-      </div>
-    );
+    return <Loader text='Loading projects...' />;
   }
 
   renderError() {
-    return (
-      <div className='projects'>
-        <p>Something went wrong, please try again later.</p>
-      </div>
-    );
+    return <p>Something went wrong, please try again later.</p>;
   }
 
   render() {
