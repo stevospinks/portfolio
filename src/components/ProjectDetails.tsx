@@ -18,7 +18,7 @@ class ProjectDetails extends React.Component<Props, EmptyState> {
       <>
         <p>{this.props.project.details}</p>
         <Row>
-          <LightYoutube videoId={this.props.project.videoSource} width={560} height={315} />
+          <LightYoutube videoId={this.props.project.videoSource} />
         </Row>
         <Button variant='outline-light' onClick={this.props.goBack}>
           Back

@@ -7,8 +7,6 @@ import '../css/LightYoutube.scss';
 
 interface Props {
   videoId: string;
-  width: number;
-  height: number;
 }
 
 interface State {
