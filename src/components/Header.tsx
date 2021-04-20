@@ -12,7 +12,6 @@ class Header extends React.Component<Props, EmptyState> {
     return (
       <>
         <p className='headline'>Stephen Spinks</p>
-        <hr className='separator' />
         <p className='subheading'>
           {this.props.subheading || [
             'Computer Games Development 1',

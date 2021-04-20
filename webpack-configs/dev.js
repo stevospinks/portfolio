@@ -11,7 +11,9 @@ function buildConfig(directories) {
   config.output.filename = 'bundle.js';
 
   config.devServer = {
-    overlay: true,
+    client: {
+      overlay: true
+    },
     historyApiFallback: true
   };
 
