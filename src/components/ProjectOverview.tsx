@@ -1,4 +1,6 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
 import { hot } from 'react-hot-loader';
 import '../css/ProjectOverview.scss';
 import { EmptyState } from '../interfaces/empty';
@@ -12,13 +14,20 @@ interface Props {
 class ProjectOverview extends React.Component<Props, EmptyState> {
   render() {
     return (
-      <div className='projectContainer' onClick={() => this.props.onClick(this.props.project)}>
-        <p>{this.props.project.name}</p>
-        <div className='imageContainer'>
-          <img src={this.props.project.imageSource} />
-        </div>
-        <p>{this.props.project.blurb}</p>
-      </div>
+      <Col className='col-padding' sm={12} md={6}>
+        <Card
+          bg='dark'
+          border='light'
+          className={this.props.project.clickable ? 'clickable' : ''}
+          onClick={() => this.props.onClick(this.props.project)}
+        >
+          <Card.Img variant='top' src={this.props.project.imageSource} />
+          <Card.Body>
+            <Card.Title>{this.props.project.name}</Card.Title>
+            <Card.Text>{this.props.project.blurb}</Card.Text>
+          </Card.Body>
+        </Card>
+      </Col>
     );
   }
 }

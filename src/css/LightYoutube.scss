@@ -1,10 +1,7 @@
 @import 'variables.scss';
 @import 'mixins.scss';
 
-.youtube-container {
-  overflow: hidden;
-  background: $color-black;
-  margin: 0 auto;
+.light-youtube {
   @include display-flex();
   justify-content: center;
   align-items: center;
@@ -15,15 +12,15 @@
     color: $color-youtube-play-hover;
   }
 
-  iframe {
-    width: 100%;
-    z-index: 100;
-    background: transparent;
-  }
+  .embed-responsive-item {
+    top: auto;
+    bottom: auto;
+    height: auto;
 
-  img {
-    width: 100%;
-    cursor: pointer;
+    img {
+      width: 100%;
+      cursor: pointer;
+    }
   }
 
   .play-button {
