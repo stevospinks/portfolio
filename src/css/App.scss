@@ -9,14 +9,10 @@ body {
   background-color: $color-background;
 }
 
-p {
-  font-size: 18px;
+a {
+  color: $color-white;
 
-  a {
+  &:hover {
     color: $color-white;
-
-    &:hover {
-      color: $color-white;
-    }
   }
 }

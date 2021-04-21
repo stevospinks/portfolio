@@ -68,7 +68,7 @@ class ProjectOverview extends React.Component<Props, State> {
   render() {
     const project = this.props.project;
     return (
-      <Col className='col-padding' sm={12} md={6}>
+      <Col className='column' sm={12} md={6}>
         <Card
           bg='dark'
           border='light'

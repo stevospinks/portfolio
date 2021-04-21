@@ -8,17 +8,29 @@ interface Props {
 }
 
 class Header extends React.Component<Props, EmptyState> {
+  yearsExperience(): number {
+    const experienceStart = new Date('2012-10-01');
+    const ageDifMs = Date.now() - experienceStart.getTime();
+    const ageDate = new Date(ageDifMs); // milliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
+
   render() {
     return (
       <>
-        <p className='headline'>Stephen Spinks</p>
-        <p className='subheading'>
-          {this.props.subheading || [
-            'Computer Games Development 1',
-            <sup key='none'>st</sup>,
-            ' class honours graduate from the University of Glamorgan (now University of South Wales).'
-          ]}
-        </p>
+        <h1>Stephen Spinks</h1>
+        <h4>
+          {this.props.subheading || (
+            <>
+              Full-stack software engineer with over {this.yearsExperience()} years of experience, based in the East of
+              England
+              <br />
+              BSc (Hons) Computer Games Development (1<sup key='none'>st</sup> Class)
+              <br />
+              Currently working with C# (.Net &amp; .Net Core), React &amp; Angular
+            </>
+          )}
+        </h4>
       </>
     );
   }

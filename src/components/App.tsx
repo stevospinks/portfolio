@@ -7,7 +7,7 @@ import { Project } from '../interfaces/project';
 import Contact from './Contact';
 import Header from './Header';
 import ProjectDetails from './ProjectDetails';
-import Projects from './Projects';
+import ProjectList from './ProjectList';
 
 interface State {
   projectToDisplay?: Project;
@@ -26,7 +26,7 @@ class App extends React.Component<EmptyProps, State> {
     return (
       <>
         <Header />
-        <Projects setProject={(project) => this.setProjectToDisplay(project)} />
+        <ProjectList setProject={(project) => this.setProjectToDisplay(project)} />
       </>
     );
   }
