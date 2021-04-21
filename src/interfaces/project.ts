@@ -1,5 +1,6 @@
 interface Project {
   id: number;
+  displayId: number;
   name: string;
   blurb: string;
   details: string;

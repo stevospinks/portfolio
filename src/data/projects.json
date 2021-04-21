@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "displayId": 1,
     "name": "Mass Spring Particle Systems",
     "blurb": "My final year university project",
     "details": "For my final year project I created a system which demonstrates mass spring particle systems. I researched, designed and developed this system over the course of my final year. I chose to develop the system using C++ and OpenGL in Visual Studio 2010. I decided to demonstrate cloth and added natural forces such as gravity and wind. A simple collision detection function was also included. Information about all three stages in this project can be found in the documentation. The video below shows a demonstration of the final application",
@@ -10,11 +11,22 @@
   },
   {
     "id": 2,
+    "displayId": 3,
     "name": "A Mobile Game",
     "blurb": "Coming soon",
     "details": "",
     "videoSource": "",
     "imageSource": "project-images/mobile-game-coming-soon-16x9-small.jpg",
     "clickable": false
+  },
+  {
+    "id": 3,
+    "displayId": 2,
+    "name": "This Website",
+    "blurb": "My portfolio website, written using React",
+    "details": "...",
+    "videoSource": "",
+    "imageSource": "screenshot",
+    "clickable": true
   }
 ]

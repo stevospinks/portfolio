@@ -33,9 +33,11 @@ class Projects extends React.Component<Props, State> {
   renderProjects() {
     return (
       <Row>
-        {this.state.projects.map((project) => (
-          <ProjectOverview key={project.id} project={project} onClick={this.props.setProject} />
-        ))}
+        {this.state.projects
+          .sort((a, b) => a.displayId - b.displayId)
+          .map((project) => (
+            <ProjectOverview key={project.id} project={project} onClick={this.props.setProject} />
+          ))}
       </Row>
     );
   }
