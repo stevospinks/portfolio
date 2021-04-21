@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 .clickable:hover {
   cursor: pointer;
 }
@@ -5,4 +7,8 @@
 .col-padding {
   padding-bottom: 15px;
   padding-top: 15px;
+}
+
+.card-img-top {
+  background-color: $color-background;
 }

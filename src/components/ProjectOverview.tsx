@@ -1,4 +1,4 @@
-import html2canvas from 'html2canvas';
+import domtoimage from 'dom-to-image';
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
@@ -20,37 +20,38 @@ const loadingScreenshot = 'project-images/loading-screenshot-16x9-small.jpg';
 
 class ProjectOverview extends React.Component<Props, State> {
   generateScreenshot() {
-    void html2canvas(document.body).then((canvas) => {
+    void domtoimage.toPng(document.body).then((dataUrl) => {
       const canvas16by9 = document.createElement('canvas');
       const canvas16by9Context = canvas16by9.getContext('2d');
       if (!canvas16by9Context) {
         return;
       }
 
-      const maxWidth = 1600;
-      const width = Math.min(canvas.width, maxWidth);
-      const minHeight = width * (9 / 16);
-      if (canvas.height > minHeight) {
-        canvas16by9.width = width;
+      const minHeight = window.innerWidth * (9 / 16);
+      if (window.innerHeight > minHeight) {
+        canvas16by9.width = window.innerWidth;
         canvas16by9.height = minHeight;
       } else {
-        const height = canvas.height; // - 110; // Remove the white line that is sometimes generated at the bottom of the image
-        canvas16by9.width = height * (16 / 9);
-        canvas16by9.height = height;
+        canvas16by9.width = window.innerHeight * (16 / 9);
+        canvas16by9.height = window.innerHeight;
       }
 
-      const cropPositionTop = -20;
-      const cropPositionLeft = -(canvas.width - canvas16by9.width) / 2;
+      const cropPositionTop = 0;
+      const cropPositionLeft = -(window.innerWidth - canvas16by9.width) / 2;
 
-      canvas16by9Context.drawImage(canvas, cropPositionLeft, cropPositionTop);
-      this.setState({
-        imageSourceOverride: canvas16by9.toDataURL(),
-        screenshotsTaken: this.state?.screenshotsTaken ? this.state.screenshotsTaken + 1 : 1
-      });
+      const img = new Image();
+      img.onload = () => {
+        canvas16by9Context.drawImage(img, cropPositionLeft, cropPositionTop);
+        this.setState({
+          imageSourceOverride: canvas16by9.toDataURL(),
+          screenshotsTaken: this.state?.screenshotsTaken ? this.state.screenshotsTaken + 1 : 1
+        });
+      };
+      img.src = dataUrl;
     });
   }
 
-  showScreenshot(): string {
+  loadScreenshot(): string {
     if (!this.state?.screenshotsTaken || this.state?.screenshotsTaken < 2) {
       void new Promise((resolve) => setTimeout(resolve, 100)).then(() => {
         this.generateScreenshot();
@@ -65,23 +66,22 @@ class ProjectOverview extends React.Component<Props, State> {
   }
 
   render() {
+    const project = this.props.project;
     return (
       <Col className='col-padding' sm={12} md={6}>
         <Card
           bg='dark'
           border='light'
-          className={this.props.project.clickable ? 'clickable' : ''}
-          onClick={() => this.props.onClick(this.props.project)}
+          className={project.clickable ? 'clickable' : ''}
+          onClick={() => this.props.onClick(project)}
         >
           <Card.Img
             variant='top'
-            src={
-              this.props.project.imageSource === 'screenshot' ? this.showScreenshot() : this.props.project.imageSource
-            }
+            src={project.imageSource === 'screenshot' ? this.loadScreenshot() : project.imageSource}
           />
           <Card.Body>
-            <Card.Title>{this.props.project.name}</Card.Title>
-            <Card.Text>{this.props.project.blurb}</Card.Text>
+            <Card.Title>{project.name}</Card.Title>
+            <Card.Text>{project.blurb}</Card.Text>
           </Card.Body>
         </Card>
       </Col>
