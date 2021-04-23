@@ -22,12 +22,12 @@ class Header extends React.Component<Props, EmptyState> {
         <h4>
           {this.props.subheading || (
             <>
-              Full-stack software engineer with over {this.yearsExperience()} years of experience, based in the East of
-              England
+              Full-stack software engineer with over {this.yearsExperience()} years&apos; experience, based in the East
+              of England.
               <br />
-              BSc (Hons) Computer Games Development (1<sup key='none'>st</sup> Class)
+              BSc (Hons) Computer Games Development (1<sup key='none'>st</sup> Class).
               <br />
-              Currently working with C# (.Net &amp; .Net Core), React &amp; Angular
+              Currently working with C# (.Net &amp; .Net Core), React &amp; Angular.
             </>
           )}
         </h4>

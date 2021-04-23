@@ -3,7 +3,7 @@ interface Project {
   displayId: number;
   name: string;
   blurb: string;
-  details: string;
+  details: string[];
   videoSource: string;
   imageSource: string;
   clickable: boolean;

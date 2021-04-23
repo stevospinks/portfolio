@@ -3,8 +3,12 @@
     "id": 1,
     "displayId": 1,
     "name": "Mass Spring Particle Systems",
-    "blurb": "My final year university project",
-    "details": "For my final year project I created a system which demonstrates mass spring particle systems. I researched, designed and developed this system over the course of my final year. I chose to develop the system using C++ and OpenGL in Visual Studio 2010. I decided to demonstrate cloth and added natural forces such as gravity and wind. A simple collision detection function was also included. Information about all three stages in this project can be found in the documentation. The video below shows a demonstration of the final application",
+    "blurb": "Final year university project",
+    "details": [
+      "For my final year university project I researched, designed and developed an application to demonstrate mass spring particle systems. It is written in C++ and uses OpenGL for rendering.",
+      "The application demonstrates cloth and includes natural forces such as gravity and wind, which can be enabled and disabled as required. A simple collision detection function is also included. Further information about all three stages in this project are available on request.",
+      "The video below shows a demonstration of the final application."
+    ],
     "videoSource": "riQTxIDijEs",
     "imageSource": "project-images/mass-spring-particle-system-16x9-small.jpg",
     "clickable": true
@@ -14,7 +18,7 @@
     "displayId": 3,
     "name": "A Mobile Game",
     "blurb": "Coming soon",
-    "details": "",
+    "details": [],
     "videoSource": "",
     "imageSource": "project-images/mobile-game-coming-soon-16x9-small.jpg",
     "clickable": false
@@ -23,10 +27,10 @@
     "id": 3,
     "displayId": 2,
     "name": "This Website",
-    "blurb": "My portfolio website, written using React",
-    "details": "...",
+    "blurb": "Portfolio website, written using React",
+    "details": ["Words", "More words", "Some other words"],
     "videoSource": "",
-    "imageSource": "screenshot",
+    "imageSource": "screenshot2",
     "clickable": true
   }
 ]

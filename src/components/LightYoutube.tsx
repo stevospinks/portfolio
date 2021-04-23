@@ -1,5 +1,4 @@
 import React from 'react';
-import Col from 'react-bootstrap/Col';
 import { hot } from 'react-hot-loader';
 import { FaYoutube } from 'react-icons/fa';
 import { MdPlayArrow } from 'react-icons/md';
@@ -25,7 +24,7 @@ class LightYoutube extends React.Component<Props, State> {
 
   displayFullYoutube() {
     return (
-      <div className='embed-responsive embed-responsive-16by9'>
+      <div className='embed-responsive embed-responsive-16by9 rounded'>
         <iframe
           frameBorder='0'
           scrolling='no'
@@ -41,9 +40,9 @@ class LightYoutube extends React.Component<Props, State> {
 
   displayLightYoutube() {
     return (
-      <div className='light-youtube embed-responsive embed-responsive-16by9'>
+      <div className='light-youtube embed-responsive embed-responsive-16by9 rounded' onClick={() => this.showVideo()}>
         <div className='embed-responsive-item'>
-          <img src={'https://img.youtube.com/vi/' + this.props.videoId + '/sddefault.jpg'}></img>
+          <img src={'https://img.youtube.com/vi/' + this.props.videoId + '/sddefault.jpg'} />
         </div>
         <FaYoutube className='play-button' />
         <MdPlayArrow className='play-button-centre' />
@@ -52,15 +51,11 @@ class LightYoutube extends React.Component<Props, State> {
   }
 
   render() {
-    if (this.props.videoId === '') {
-      return <></>;
+    if (this.state.loadVideo) {
+      return this.displayFullYoutube();
     }
 
-    return (
-      <Col sm={12} md={10} lg={8} xl={6} onClick={() => this.showVideo()}>
-        {this.state.loadVideo ? this.displayFullYoutube() : this.displayLightYoutube()}
-      </Col>
-    );
+    return this.displayLightYoutube();
   }
 }
 
