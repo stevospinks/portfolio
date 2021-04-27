@@ -42,7 +42,7 @@ class App extends React.Component<EmptyProps, State> {
 
   render() {
     window.scrollTo(0, 0);
-    const displayProject = this.state?.projectToDisplay?.clickable ?? false;
+    const displayProject = this.state?.projectToDisplay ?? false;
 
     return (
       <Container>

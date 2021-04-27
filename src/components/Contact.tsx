@@ -11,20 +11,17 @@ class Contact extends React.Component<EmptyProps, EmptyState> {
         <p>
           Contact Me:
           <br />
-          <a href='https://github.com/stevospinks' target='_blank' rel='noopener noreferrer'>
-            <FaGithubSquare className='icon' title='GitHub' />
+          <a href='https://github.com/stevospinks' target='_blank' rel='noopener noreferrer' className='icon'>
+            <FaGithubSquare title='GitHub' />
           </a>
-          &nbsp;
-          <a href='https://www.linkedin.com/in/stephenspinks' target='_blank' rel='noopener noreferrer'>
-            <FaLinkedin className='icon' title='LinkedIn' />
+          <a href='https://www.linkedin.com/in/sspinks' target='_blank' rel='noopener noreferrer' className='icon'>
+            <FaLinkedin title='LinkedIn' />
           </a>
-          &nbsp;
-          <a href='https://twitter.com/stevospinks/' target='_blank' rel='noopener noreferrer'>
-            <FaTwitterSquare className='icon' title='Twitter' />
+          <a href='https://twitter.com/stevospinks/' target='_blank' rel='noopener noreferrer' className='icon'>
+            <FaTwitterSquare title='Twitter' />
           </a>
-          &nbsp;
-          <a href='mailto:stephen@stephenspinks.com' target='_blank' rel='noopener noreferrer'>
-            <FaEnvelopeSquare className='icon' title='Direct E-mail' />
+          <a href='mailto:stephen@stephenspinks.com' target='_blank' rel='noopener noreferrer' className='icon'>
+            <FaEnvelopeSquare title='Direct E-mail' />
           </a>
         </p>
       </div>

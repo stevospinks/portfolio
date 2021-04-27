@@ -6,7 +6,6 @@ interface Project {
   details: string[];
   videoSource: string;
   imageSource: string;
-  clickable: boolean;
 }
 
 export type { Project };

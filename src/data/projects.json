@@ -10,8 +10,7 @@
       "The video below shows a demonstration of the final application."
     ],
     "videoSource": "riQTxIDijEs",
-    "imageSource": "project-images/mass-spring-particle-system-16x9-small.jpg",
-    "clickable": true
+    "imageSource": "project-images/mass-spring-particle-system-16x9-small.jpg"
   },
   {
     "id": 2,
@@ -20,17 +19,18 @@
     "blurb": "Coming soon",
     "details": [],
     "videoSource": "",
-    "imageSource": "project-images/mobile-game-coming-soon-16x9-small.jpg",
-    "clickable": false
+    "imageSource": "project-images/mobile-game-coming-soon-16x9-small.jpg"
   },
   {
     "id": 3,
     "displayId": 2,
     "name": "This Website",
     "blurb": "Portfolio website, written using React",
-    "details": ["Words", "More words", "Some other words"],
+    "details": [
+      "This is my portfolio website, listing the personal and university projects I've worked on.",
+      "It’s written using React, TypeScript, HTML and SCSS. The source code can be found on my GitHub."
+    ],
     "videoSource": "",
-    "imageSource": "screenshot2",
-    "clickable": true
+    "imageSource": "screenshot2"
   }
 ]

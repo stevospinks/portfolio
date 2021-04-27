@@ -13,6 +13,19 @@ interface Props {
 }
 
 class ProjectOverview extends React.Component<Props, EmptyState> {
+  private handleKeypress(event: React.KeyboardEvent<HTMLDivElement>, project: Project) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.openProject(project);
+      event.preventDefault();
+    }
+  }
+
+  private openProject(project: Project) {
+    if (project.details.length > 0) {
+      this.props.onClick(project);
+    }
+  }
+
   render() {
     const project = this.props.project;
     return (
@@ -20,12 +33,10 @@ class ProjectOverview extends React.Component<Props, EmptyState> {
         <Card
           bg='dark'
           border='light'
-          className={project.clickable ? 'clickable' : ''}
-          onClick={() => {
-            if (project.clickable) {
-              this.props.onClick(project);
-            }
-          }}
+          tabIndex={project.displayId}
+          className={project.details.length > 0 ? 'clickable' : ''}
+          onClick={() => this.openProject(project)}
+          onKeyPress={(event: React.KeyboardEvent<HTMLDivElement>) => this.handleKeypress(event, project)}
         >
           <ProjectImage
             className='card-img-top'
