@@ -1,6 +1,4 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
 import { hot } from 'react-hot-loader';
 import '../css/ProjectOverview.scss';
 import { EmptyState } from '../interfaces/empty';
@@ -29,12 +27,10 @@ class ProjectOverview extends React.Component<Props, EmptyState> {
   render() {
     const project = this.props.project;
     return (
-      <Col className='column' sm={12} md={6}>
-        <Card
-          bg='dark'
-          border='light'
+      <div className='column col-md-6 col-sm-12'>
+        <div
+          className={'card bg-dark border-light' + (project.details.length > 0 ? ' clickable' : '')}
           tabIndex={project.displayId}
-          className={project.details.length > 0 ? 'clickable' : ''}
           onClick={() => this.openProject(project)}
           onKeyPress={(event: React.KeyboardEvent<HTMLDivElement>) => this.handleKeypress(event, project)}
         >
@@ -43,12 +39,12 @@ class ProjectOverview extends React.Component<Props, EmptyState> {
             imageSource={this.props.project.imageSource}
             renderScreenshotIfRequested={true}
           />
-          <Card.Body>
-            <Card.Title>{project.name}</Card.Title>
-            <Card.Text>{project.blurb}</Card.Text>
-          </Card.Body>
-        </Card>
-      </Col>
+          <div className='card-body'>
+            <div className='card-title h5'>{project.name}</div>
+            <div className='card-text'>{project.blurb}</div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

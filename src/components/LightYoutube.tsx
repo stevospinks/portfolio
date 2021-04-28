@@ -1,7 +1,8 @@
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { FaYoutube } from 'react-icons/fa';
-import { MdPlayArrow } from 'react-icons/md';
 import '../css/LightYoutube.scss';
 
 interface Props {
@@ -44,8 +45,8 @@ class LightYoutube extends React.Component<Props, State> {
         <div className='embed-responsive-item'>
           <img src={'https://img.youtube.com/vi/' + this.props.videoId + '/sddefault.jpg'} />
         </div>
-        <FaYoutube className='play-button' />
-        <MdPlayArrow className='play-button-centre' />
+        <FontAwesomeIcon icon={faYoutube} className='play-button' />
+        <FontAwesomeIcon icon={faPlay} className='play-button-centre' />
       </div>
     );
   }

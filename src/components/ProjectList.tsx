@@ -1,5 +1,4 @@
 import React from 'react';
-import Row from 'react-bootstrap/Row';
 import { hot } from 'react-hot-loader';
 import '../css/ProjectList.scss';
 import { Project } from '../interfaces/project';
@@ -32,13 +31,13 @@ class ProjectList extends React.Component<Props, State> {
 
   renderProjects() {
     return (
-      <Row>
+      <div className='row'>
         {this.state.projects
           .sort((a, b) => a.displayId - b.displayId)
           .map((project) => (
             <ProjectOverview key={project.id} project={project} onClick={this.props.setProject} />
           ))}
-      </Row>
+      </div>
     );
   }
 

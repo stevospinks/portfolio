@@ -1,7 +1,4 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import { hot } from 'react-hot-loader';
 import '../css/ProjectDetails.scss';
 import { EmptyState } from '../interfaces/empty';
@@ -19,30 +16,30 @@ class ProjectDetails extends React.Component<Props, EmptyState> {
     const project = this.props.project;
     return (
       <>
-        <Row>
-          <Col sm={12} md={10} lg={8} xl={6}>
+        <div className='row'>
+          <div className='col-xl-6 col-lg-8 col-md-10 col-sm-12'>
             <ProjectImage className='img-fluid rounded' imageSource={this.props.project.imageSource} />
-          </Col>
-        </Row>
-        <Row>
-          <Col className='description'>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='description col'>
             {project.details.map((detailParagraph, index) => (
               <p key={index}>{detailParagraph}</p>
             ))}
-          </Col>
-        </Row>
+          </div>
+        </div>
         {project.videoSource && (
-          <Row>
-            <Col sm={12} md={10} lg={8} xl={6}>
+          <div className='row'>
+            <div className='col-xl-6 col-lg-8 col-md-10 col-sm-12'>
               <LightYoutube videoId={project.videoSource} />
-            </Col>
-          </Row>
+            </div>
+          </div>
         )}
-        <Row>
-          <Button variant='outline-light' onClick={this.props.goBack}>
+        <div className='row'>
+          <button className='btn btn-outline-light' onClick={this.props.goBack}>
             Back
-          </Button>
-        </Row>
+          </button>
+        </div>
       </>
     );
   }

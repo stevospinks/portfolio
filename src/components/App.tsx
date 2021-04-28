@@ -1,5 +1,4 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
 import { hot } from 'react-hot-loader';
 import '../css/App.scss';
 import { EmptyProps } from '../interfaces/empty';
@@ -45,10 +44,10 @@ class App extends React.Component<EmptyProps, State> {
     const displayProject = this.state?.projectToDisplay ?? false;
 
     return (
-      <Container>
+      <div className='container'>
         {displayProject ? this.displaySingleProject(this.state.projectToDisplay!) : this.displayAllProjects()}
         <Contact />
-      </Container>
+      </div>
     );
   }
 }
