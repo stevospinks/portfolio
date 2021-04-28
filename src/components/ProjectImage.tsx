@@ -14,7 +14,7 @@ interface State {
   screenshotsTaken?: number;
 }
 
-const loadingScreenshot = 'project-images/loading-screenshot-16x9-small.jpg';
+const loadingScreenshot = 'project-images/loading-screenshot.jpg';
 
 class ProjectImage extends React.Component<Props, State> {
   generateScreenshot() {
