@@ -37,7 +37,8 @@ class ProjectOverview extends React.Component<Props, EmptyState> {
           <ProjectImage
             className='card-img-top'
             imageSource={this.props.project.imageSource}
-            renderScreenshotIfRequested={true}
+            projectName={this.props.project.name}
+            generateScreenshotIfRequested={true}
           />
           <div className='card-body'>
             <div className='card-title h5'>{project.name}</div>

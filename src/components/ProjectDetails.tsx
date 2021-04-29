@@ -18,7 +18,11 @@ class ProjectDetails extends React.Component<Props, EmptyState> {
       <>
         <div className='row'>
           <div className='col-xl-6 col-lg-8 col-md-10 col-sm-12'>
-            <ProjectImage className='img-fluid rounded' imageSource={this.props.project.imageSource} />
+            <ProjectImage
+              className='img-fluid rounded header-image'
+              imageSource={this.props.project.imageSource}
+              projectName={this.props.project.name}
+            />
           </div>
         </div>
         <div className='row'>
