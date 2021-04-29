@@ -7,7 +7,7 @@
     "start:dev": "webpack serve --env=dev --port 3000",
     "start:prod": "webpack --env=prod && start \"\" \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" \"http://localhost:3001\" && http-server ./build -p 3001",
     "prestart:dev": "start \"\" \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" \"http://localhost:3000\"",
-    "prestart:prod": "rd /s /q build && mkdir build"
+    "prestart:prod": "if exist build rd /s /q build && mkdir build"
   },
   "repository": {
     "type": "git",
