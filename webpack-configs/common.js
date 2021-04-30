@@ -16,7 +16,7 @@ function buildConfig(directories) {
         patterns: [
           { from: 'src/.htaccess', to: '' },
           { from: 'src/favicon.ico', to: '' },
-          { from: 'src/images/project-images', to: 'project-images' },
+          { from: 'src/images', to: 'images' },
           { from: 'src/data/projects.json', to: 'data/projects.json' }
         ]
       }),
