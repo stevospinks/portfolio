@@ -17,7 +17,7 @@ function buildConfig(directories) {
           { from: 'src/.htaccess', to: '' },
           { from: 'src/favicon.ico', to: '' },
           { from: 'src/images', to: 'images' },
-          { from: 'src/data/projects.json', to: 'data/projects.json' }
+          { from: 'src/data', to: 'data' }
         ]
       }),
       new HtmlWebpackPlugin({

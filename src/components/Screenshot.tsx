@@ -17,7 +17,7 @@ interface State {
 }
 
 class Screenshot extends React.Component<Props, State> {
-  private readonly loadingScreenshot = 'images\\loading-screenshot.jpg';
+  private readonly loadingScreenshot = 'images/loading-screenshot.jpg';
   private readonly localStorageName = `${this.props.id.toLowerCase().replace(' ', '-')}-screenshot`;
   private readonly localStorageValidity = 24 * 60 * 60 * 1000; // 1 day in milliseconds
 

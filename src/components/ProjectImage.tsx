@@ -25,7 +25,7 @@ class ProjectImage extends React.Component<Props, EmptyState> {
       );
     }
 
-    return <img className={this.props.className} src={`images\\project-images\\${this.props.imageSource}`} />;
+    return <img className={this.props.className} src={`images/project-images/${this.props.imageSource}`} />;
   }
 }
 

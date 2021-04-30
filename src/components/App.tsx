@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader';
 import '../css/App.scss';
 import { EmptyProps } from '../interfaces/empty';
 import { Project } from '../interfaces/project';
+import About from './About';
 import Contact from './Contact';
 import Header from './Header';
 import ProjectDetails from './ProjectDetails';
@@ -24,19 +25,14 @@ class App extends React.Component<EmptyProps, State> {
   displayAllProjects() {
     return (
       <>
-        <Header />
+        <About />
         <ProjectList setProject={(project) => this.setProjectToDisplay(project)} />
       </>
     );
   }
 
   displaySingleProject(project: Project) {
-    return (
-      <>
-        <Header subheading={project.name} />
-        <ProjectDetails project={project} goBack={() => this.clearProject()} />
-      </>
-    );
+    return <ProjectDetails project={project} goBack={() => this.clearProject()} />;
   }
 
   render() {
@@ -45,6 +41,7 @@ class App extends React.Component<EmptyProps, State> {
 
     return (
       <div className='container'>
+        <Header />
         {displayProject ? this.displaySingleProject(this.state.projectToDisplay!) : this.displayAllProjects()}
         <Contact />
       </div>

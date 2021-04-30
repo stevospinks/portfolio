@@ -16,6 +16,7 @@ class ProjectDetails extends React.Component<Props, EmptyState> {
     const project = this.props.project;
     return (
       <>
+        <h4>{this.props.project.name}</h4>
         <div className='row'>
           <div className='col-xl-6 col-lg-8 col-md-10 col-sm-12'>
             <ProjectImage
