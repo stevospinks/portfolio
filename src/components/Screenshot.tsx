@@ -84,12 +84,12 @@ class Screenshot extends React.Component<Props, State> {
         canvas16by9.height = window.innerHeight;
       }
 
-      const cropPositionTop = 0;
-      const cropPositionLeft = -(window.innerWidth - canvas16by9.width) / 2;
+      const cropX = -(window.innerWidth - canvas16by9.width) / 2;
+      const cropY = 0;
 
       const img = new Image();
       img.onload = () => {
-        canvas16by9Context.drawImage(img, cropPositionLeft, cropPositionTop);
+        canvas16by9Context.drawImage(img, cropX, cropY);
         this.setState({
           screenshot: canvas16by9.toDataURL(),
           screenshotsTaken: this.state?.screenshotsTaken ? this.state.screenshotsTaken + 1 : 1

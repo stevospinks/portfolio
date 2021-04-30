@@ -27,10 +27,6 @@ class LightYoutube extends React.Component<Props, State> {
     return (
       <div className='embed-responsive embed-responsive-16by9 rounded'>
         <iframe
-          frameBorder='0'
-          scrolling='no'
-          marginHeight={0}
-          marginWidth={0}
           allowFullScreen
           className='embed-responsive-item'
           src={'https://www.youtube.com/embed/' + this.props.videoId + '?autoplay=1&modestbranding=1&rel=0'}
