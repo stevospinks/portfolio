@@ -1,10 +1,9 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
 import { hot } from 'react-hot-loader';
 import '../css/ProjectOverview.scss';
 import { EmptyState } from '../interfaces/empty';
 import { Project } from '../interfaces/project';
+import ProjectImage from './ProjectImage';
 
 interface Props {
   onClick: (project: Project) => void;
@@ -12,22 +11,41 @@ interface Props {
 }
 
 class ProjectOverview extends React.Component<Props, EmptyState> {
+  private handleKeypress(event: React.KeyboardEvent<HTMLDivElement>, project: Project) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.openProject(project);
+      event.preventDefault();
+    }
+  }
+
+  private openProject(project: Project) {
+    if (project.details.length > 0) {
+      this.props.onClick(project);
+    }
+  }
+
   render() {
+    const project = this.props.project;
     return (
-      <Col className='col-padding' sm={12} md={6}>
-        <Card
-          bg='dark'
-          border='light'
-          className={this.props.project.clickable ? 'clickable' : ''}
-          onClick={() => this.props.onClick(this.props.project)}
+      <div className='column col-md-6 col-sm-12'>
+        <div
+          className={'card bg-dark border-light' + (project.details.length > 0 ? ' clickable' : '')}
+          tabIndex={project.displayId}
+          onClick={() => this.openProject(project)}
+          onKeyPress={(event: React.KeyboardEvent<HTMLDivElement>) => this.handleKeypress(event, project)}
         >
-          <Card.Img variant='top' src={this.props.project.imageSource} />
-          <Card.Body>
-            <Card.Title>{this.props.project.name}</Card.Title>
-            <Card.Text>{this.props.project.blurb}</Card.Text>
-          </Card.Body>
-        </Card>
-      </Col>
+          <ProjectImage
+            className='card-img-top'
+            imageSource={this.props.project.imageSource}
+            projectName={this.props.project.name}
+            generateScreenshotIfRequested={true}
+          />
+          <div className='card-body'>
+            <div className='card-title h5'>{project.name}</div>
+            <div className='card-text'>{project.blurb}</div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

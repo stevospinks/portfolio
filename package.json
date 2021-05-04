@@ -7,7 +7,7 @@
     "start:dev": "webpack serve --env=dev --port 3000",
     "start:prod": "webpack --env=prod && start \"\" \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" \"http://localhost:3001\" && http-server ./build -p 3001",
     "prestart:dev": "start \"\" \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" \"http://localhost:3000\"",
-    "prestart:prod": "rd /s /q build && mkdir build"
+    "prestart:prod": "if exist build rd /s /q build && mkdir build"
   },
   "repository": {
     "type": "git",
@@ -16,86 +16,54 @@
   "author": "Stephen Spinks",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.13.15",
+    "@babel/core": "^7.14.0",
     "@babel/eslint-parser": "^7.13.14",
     "@babel/preset-typescript": "^7.13.0",
-    "@types/react": "^17.0.3",
+    "@fullhuman/postcss-purgecss": "^4.0.3",
+    "@types/dom-to-image": "^2.6.2",
+    "@types/react": "^17.0.4",
     "@types/react-dom": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "babel-loader": "^8.2.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-react-app": "^10.0.0",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.4",
-    "cssnano": "^5.0.1",
-    "eslint": "^7.24.0",
+    "css-minimizer-webpack-plugin": "^2.0.0",
+    "eslint": "^7.25.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-webpack-plugin": "^2.5.4",
-    "file-loader": "^6.2.0",
+    "glob": "^7.1.6",
     "html-webpack-plugin": "^5.3.1",
     "http-server": "^0.12.3",
-    "mini-css-extract-plugin": "^1.5.0",
+    "mini-css-extract-plugin": "^1.5.1",
     "node-sass": "^5.0.0",
-    "postcss": "^8.2.10",
+    "postcss": "^8.2.13",
     "postcss-loader": "^5.2.0",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
     "typescript": "^4.2.4",
     "url-loader": "^4.1.1",
-    "webpack": "^5.34.0",
+    "webpack": "^5.36.1",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "4.0.0-beta.2"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "bootstrap": "^4.6.0",
+    "dom-to-image": "^2.6.0",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "react": "^17.0.2",
-    "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0",
     "react-icons": "^4.2.0"
-  },
-  "babel": {
-    "presets": [
-      "babel-preset-react-app"
-    ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:import/errors",
-      "plugin:import/warnings"
-    ],
-    "parser": "@babel/eslint-parser",
-    "parserOptions": {
-      "ecmaVersion": 2018,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "env": {
-      "browser": true,
-      "node": true,
-      "es6": true,
-      "jest": true
-    },
-    "rules": {
-      "no-debugger": "off",
-      "no-console": "off",
-      "no-unused-vars": "warn",
-      "react/prop-types": "warn"
-    },
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    },
-    "root": true
   }
 }

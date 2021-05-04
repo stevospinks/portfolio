@@ -1,0 +1,7 @@
+@import 'mixins.scss';
+
+.avatar {
+  padding-bottom: 1.5rem;
+  width: 10rem;
+  @include filter(brightness(90%));
+}

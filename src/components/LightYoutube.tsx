@@ -1,8 +1,8 @@
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import Col from 'react-bootstrap/Col';
 import { hot } from 'react-hot-loader';
-import { FaYoutube } from 'react-icons/fa';
-import { MdPlayArrow } from 'react-icons/md';
 import '../css/LightYoutube.scss';
 
 interface Props {
@@ -25,12 +25,8 @@ class LightYoutube extends React.Component<Props, State> {
 
   displayFullYoutube() {
     return (
-      <div className='embed-responsive embed-responsive-16by9'>
+      <div className='embed-responsive embed-responsive-16by9 rounded'>
         <iframe
-          frameBorder='0'
-          scrolling='no'
-          marginHeight={0}
-          marginWidth={0}
           allowFullScreen
           className='embed-responsive-item'
           src={'https://www.youtube.com/embed/' + this.props.videoId + '?autoplay=1&modestbranding=1&rel=0'}
@@ -41,26 +37,22 @@ class LightYoutube extends React.Component<Props, State> {
 
   displayLightYoutube() {
     return (
-      <div className='light-youtube embed-responsive embed-responsive-16by9'>
+      <div className='light-youtube embed-responsive embed-responsive-16by9 rounded' onClick={() => this.showVideo()}>
         <div className='embed-responsive-item'>
-          <img src={'https://img.youtube.com/vi/' + this.props.videoId + '/sddefault.jpg'}></img>
+          <img src={'https://img.youtube.com/vi/' + this.props.videoId + '/sddefault.jpg'} />
         </div>
-        <FaYoutube className='play-button' />
-        <MdPlayArrow className='play-button-centre' />
+        <FontAwesomeIcon icon={faYoutube} className='play-button' />
+        <FontAwesomeIcon icon={faPlay} className='play-button-centre' />
       </div>
     );
   }
 
   render() {
-    if (this.props.videoId === '') {
-      return <></>;
+    if (this.state.loadVideo) {
+      return this.displayFullYoutube();
     }
 
-    return (
-      <Col sm={12} md={10} lg={8} xl={6} onClick={() => this.showVideo()}>
-        {this.state.loadVideo ? this.displayFullYoutube() : this.displayLightYoutube()}
-      </Col>
-    );
+    return this.displayLightYoutube();
   }
 }
 
