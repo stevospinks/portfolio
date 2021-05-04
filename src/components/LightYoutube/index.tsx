@@ -3,7 +3,7 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import '../css/LightYoutube.scss';
+import './style.scss';
 
 interface Props {
   videoId: string;

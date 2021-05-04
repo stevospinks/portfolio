@@ -1,10 +1,10 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import '../css/ProjectDetails.scss';
-import { EmptyState } from '../interfaces/empty';
-import { Project } from '../interfaces/project';
-import LightYoutube from './LightYoutube';
-import ProjectImage from './ProjectImage';
+import { EmptyState } from '../../common/interfaces/empty';
+import { Project } from '../../common/interfaces/project';
+import LightYoutube from '../LightYoutube';
+import ProjectImage from '../ProjectImage';
+import './style.scss';
 
 interface Props {
   project: Project;

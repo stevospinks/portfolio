@@ -1,7 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import '../css/Loader.scss';
-import { EmptyState } from '../interfaces/empty';
+import { EmptyState } from '../../common/interfaces/empty';
+import './style.scss';
 
 interface Props {
   text: string;

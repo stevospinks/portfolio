@@ -1,9 +1,9 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import '../css/ProjectOverview.scss';
-import { EmptyState } from '../interfaces/empty';
-import { Project } from '../interfaces/project';
-import ProjectImage from './ProjectImage';
+import { EmptyState } from '../../common/interfaces/empty';
+import { Project } from '../../common/interfaces/project';
+import ProjectImage from '../ProjectImage';
+import './style.scss';
 
 interface Props {
   onClick: (project: Project) => void;

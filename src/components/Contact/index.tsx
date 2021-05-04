@@ -3,8 +3,8 @@ import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import '../css/Contact.scss';
-import { EmptyProps, EmptyState } from '../interfaces/empty';
+import { EmptyProps, EmptyState } from '../../common/interfaces/empty';
+import './style.scss';
 
 class Contact extends React.Component<EmptyProps, EmptyState> {
   render() {
