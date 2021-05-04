@@ -1,6 +1,5 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import '../css/ProjectImage.scss';
 import { EmptyState } from '../interfaces/empty';
 import Screenshot from './Screenshot';
 

@@ -18,15 +18,24 @@ interface State {
 class ProjectList extends React.Component<Props, State> {
   componentDidMount() {
     this.setState({ loadComplete: false });
-    const timerId = setTimeout(() => this.setState({ loadComplete: true, errorDuringLoad: true }), 5000);
-    void fetch('./data/projects.json')
+    const timerId = setTimeout(() => this.handleLoadingError(), 5000);
+    fetch('./data/projects.json')
       .then((response: Response) => {
         return response.json();
       })
       .then((projects: Project[]) => {
         clearTimeout(timerId);
         this.setState({ loadComplete: true, errorDuringLoad: false, projects: projects });
+      })
+      .catch((error) => {
+        console.error(error);
+        clearTimeout(timerId);
+        this.handleLoadingError();
       });
+  }
+
+  handleLoadingError() {
+    this.setState({ loadComplete: true, errorDuringLoad: true });
   }
 
   renderProjects() {

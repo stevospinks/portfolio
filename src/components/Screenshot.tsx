@@ -1,7 +1,6 @@
 import domtoimage from 'dom-to-image';
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import '../css/Screenshot.scss';
 import { LocalStorageObject } from '../interfaces/local-storage-object';
 
 interface Props {
@@ -52,9 +51,9 @@ class Screenshot extends React.Component<Props, State> {
     }
 
     if (!this.state?.screenshotsTaken || this.state?.screenshotsTaken < this.props.screenshotCount) {
-      void new Promise((resolve) => setTimeout(resolve, 100)).then(() => {
-        this.generateScreenshot();
-      });
+      new Promise((resolve) => setTimeout(resolve, 100))
+        .then(() => this.generateScreenshot())
+        .catch((error) => console.error(error));
     }
 
     if (this.state?.screenshot) {
@@ -68,35 +67,38 @@ class Screenshot extends React.Component<Props, State> {
   }
 
   private generateScreenshot(): void {
-    void domtoimage.toPng(document.body).then((dataUrl) => {
-      const canvas16by9 = document.createElement('canvas');
-      const canvas16by9Context = canvas16by9.getContext('2d');
-      if (!canvas16by9Context) {
-        return;
-      }
+    domtoimage
+      .toPng(document.body)
+      .then((dataUrl: string) => {
+        const canvas16by9 = document.createElement('canvas');
+        const canvas16by9Context = canvas16by9.getContext('2d');
+        if (!canvas16by9Context) {
+          return;
+        }
 
-      const minHeight = window.innerWidth * (9 / 16);
-      if (window.innerHeight > minHeight) {
-        canvas16by9.width = window.innerWidth;
-        canvas16by9.height = minHeight;
-      } else {
-        canvas16by9.width = window.innerHeight * (16 / 9);
-        canvas16by9.height = window.innerHeight;
-      }
+        const minHeight = window.innerWidth * (9 / 16);
+        if (window.innerHeight > minHeight) {
+          canvas16by9.width = window.innerWidth;
+          canvas16by9.height = minHeight;
+        } else {
+          canvas16by9.width = window.innerHeight * (16 / 9);
+          canvas16by9.height = window.innerHeight;
+        }
 
-      const cropX = -(window.innerWidth - canvas16by9.width) / 2;
-      const cropY = 0;
+        const cropX = -(window.innerWidth - canvas16by9.width) / 2;
+        const cropY = 0;
 
-      const img = new Image();
-      img.onload = () => {
-        canvas16by9Context.drawImage(img, cropX, cropY);
-        this.setState({
-          screenshot: canvas16by9.toDataURL(),
-          screenshotsTaken: this.state?.screenshotsTaken ? this.state.screenshotsTaken + 1 : 1
-        });
-      };
-      img.src = dataUrl;
-    });
+        const img = new Image();
+        img.onload = () => {
+          canvas16by9Context.drawImage(img, cropX, cropY);
+          this.setState({
+            screenshot: canvas16by9.toDataURL(),
+            screenshotsTaken: this.state?.screenshotsTaken ? this.state.screenshotsTaken + 1 : 1
+          });
+        };
+        img.src = dataUrl;
+      })
+      .catch((error) => console.error(error));
   }
 }
 
