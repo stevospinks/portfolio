@@ -1,8 +1,10 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import ESLintPlugin from 'eslint-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { Configuration } from 'webpack';
+import { Directories } from './interfaces/directories';
 
-function buildConfig(directories) {
+export function buildCommonConfig(directories: Directories): Configuration {
   return {
     target: 'web',
     entry: './src/index.tsx',
@@ -36,7 +38,7 @@ function buildConfig(directories) {
       rules: [
         {
           test: /\.(js|jsx|ts|tsx)$/,
-          include: directories.app,
+          include: directories.src,
           use: {
             loader: 'babel-loader',
             options: {
@@ -46,7 +48,7 @@ function buildConfig(directories) {
         },
         {
           test: /\.(png|jp(e*)g)$/,
-          include: directories.app,
+          include: directories.src,
           use: [
             {
               loader: 'url-loader',
@@ -60,5 +62,3 @@ function buildConfig(directories) {
     }
   };
 }
-
-module.exports = buildConfig;
