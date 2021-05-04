@@ -2,38 +2,35 @@
 @import '../../common/scss/variables.scss';
 
 .light-youtube {
-  @include display-flex();
-  justify-content: center;
-  align-items: center;
   color: $color-youtube-play;
+  cursor: pointer;
   @include transition(0.3s all);
 
   &:hover {
     color: $color-youtube-play-hover;
   }
 
-  .embed-responsive-item {
-    top: auto;
-    bottom: auto;
-    height: auto;
-
-    img {
-      width: 100%;
-      cursor: pointer;
-    }
-  }
-
   .play-button {
     font-size: 72px;
     position: absolute;
-    cursor: pointer;
   }
 
   .play-button-centre {
     color: white;
-    font-size: 28px;
+    font-size: 24px;
     position: absolute;
-    cursor: pointer;
-    padding-left: 4px;
+    margin-left: 4px;
+  }
+
+  .embed-responsive {
+    @include display-flex();
+    justify-content: center;
+    align-items: center;
+
+    .embed-responsive-item {
+      top: auto;
+      bottom: auto;
+      height: auto;
+    }
   }
 }

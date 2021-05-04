@@ -24,25 +24,23 @@ class LightYoutube extends React.Component<Props, State> {
   }
 
   displayFullYoutube() {
+    const source = `https://www.youtube.com/embed/${this.props.videoId}?autoplay=1&modestbranding=1&rel=0`;
     return (
       <div className='embed-responsive embed-responsive-16by9 rounded'>
-        <iframe
-          allowFullScreen
-          className='embed-responsive-item'
-          src={'https://www.youtube.com/embed/' + this.props.videoId + '?autoplay=1&modestbranding=1&rel=0'}
-        />
+        <iframe className='embed-responsive-item' src={source} allowFullScreen />
       </div>
     );
   }
 
   displayLightYoutube() {
+    const source = `https://img.youtube.com/vi/${this.props.videoId}/sddefault.jpg`;
     return (
-      <div className='light-youtube embed-responsive embed-responsive-16by9 rounded' onClick={() => this.showVideo()}>
-        <div className='embed-responsive-item'>
-          <img src={'https://img.youtube.com/vi/' + this.props.videoId + '/sddefault.jpg'} />
+      <div className='light-youtube' onClick={() => this.showVideo()}>
+        <div className='embed-responsive embed-responsive-16by9 rounded'>
+          <img className='embed-responsive-item' src={source} />
+          <FontAwesomeIcon icon={faYoutube} className='play-button' />
+          <FontAwesomeIcon icon={faPlay} className='play-button-centre' />
         </div>
-        <FontAwesomeIcon icon={faYoutube} className='play-button' />
-        <FontAwesomeIcon icon={faPlay} className='play-button-centre' />
       </div>
     );
   }
