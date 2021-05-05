@@ -35,7 +35,7 @@ class ProjectDetails extends React.Component<Props, EmptyState> {
         </div>
         {project.videoSource && (
           <div className='row'>
-            <div className='col-xl-6 col-lg-8 col-md-10 col-sm-12'>
+            <div className='col-xxl-5 col-xl-6 col-lg-7 col-md-9 col-sm-12'>
               <LightYoutube videoId={project.videoSource} />
             </div>
           </div>
