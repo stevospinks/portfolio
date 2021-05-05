@@ -18,7 +18,7 @@ class ProjectDetails extends React.Component<Props, EmptyState> {
       <>
         <h4>{this.props.project.name}</h4>
         <div className='row'>
-          <div className='col-xl-6 col-lg-8 col-md-10 col-sm-12'>
+          <div className='col-xxl-5 col-xl-6 col-lg-7 col-md-9 col-sm-12'>
             <ProjectImage
               className='img-fluid rounded header-image'
               imageSource={this.props.project.imageSource}
@@ -41,9 +41,11 @@ class ProjectDetails extends React.Component<Props, EmptyState> {
           </div>
         )}
         <div className='row'>
-          <button className='btn btn-outline-light' onClick={this.props.goBack}>
-            Back
-          </button>
+          <div className='col'>
+            <button className='btn btn-outline-light' onClick={this.props.goBack}>
+              Back
+            </button>
+          </div>
         </div>
       </>
     );
