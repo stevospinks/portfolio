@@ -1,0 +1,14 @@
+@import '../../common/scss/variables.scss';
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+.column {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.card-img-top {
+  background-color: $color-background;
+}
