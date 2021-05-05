@@ -19,7 +19,7 @@ class ProjectList extends React.Component<Props, State> {
   componentDidMount() {
     this.setState({ loadComplete: false });
     const timerId = setTimeout(() => this.handleLoadingError(), 5000);
-    fetch('./data/projects.json')
+    fetch('data/projects.json')
       .then((response: Response) => {
         return response.json();
       })
