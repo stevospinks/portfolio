@@ -1,7 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { EmptyState } from '../interfaces/empty';
-import Screenshot from './Screenshot';
+import { EmptyState } from '../../common/interfaces/empty';
+import Screenshot from '../Screenshot';
 
 interface Props {
   projectName: string;

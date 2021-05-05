@@ -1,7 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import '../css/About.scss';
-import { EmptyProps, EmptyState } from '../interfaces/empty';
+import { EmptyProps, EmptyState } from '../../common/interfaces/empty';
+import './style.scss';
 
 class About extends React.Component<EmptyProps, EmptyState> {
   yearsExperience(): number {

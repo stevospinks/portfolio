@@ -1,7 +1,7 @@
 import domtoimage from 'dom-to-image';
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { LocalStorageObject } from '../interfaces/local-storage-object';
+import { LocalStorageObject } from '../../common/interfaces/local-storage-object';
 
 interface Props {
   id: string;
