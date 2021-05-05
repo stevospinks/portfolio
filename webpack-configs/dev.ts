@@ -24,5 +24,5 @@ export function buildDevConfig(directories: Directories): Configuration {
     use: ['style-loader', 'css-loader', 'sass-loader']
   });
 
-  return config as Configuration;
+  return config;
 }

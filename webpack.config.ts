@@ -10,10 +10,10 @@ interface Args {
 }
 
 function buildConfig(args: Args): Configuration | undefined {
-  const directories = {
+  const directories: Directories = {
     build: resolve(__dirname, './build'),
     src: resolve(__dirname, './src')
-  } as Directories;
+  };
 
   if (args.dev) {
     /* eslint-disable @typescript-eslint/no-unsafe-call */
