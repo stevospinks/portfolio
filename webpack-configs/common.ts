@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { Configuration } from 'webpack';
 import { Directories } from './interfaces/directories';
 
-export function buildCommonConfig(directories: Directories): Configuration {
+export function buildConfig(directories: Directories): Configuration {
   return {
     target: 'web',
     entry: './src/index.tsx',

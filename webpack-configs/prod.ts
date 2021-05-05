@@ -4,10 +4,10 @@ import glob from 'glob';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { Configuration, DefinePlugin } from 'webpack';
 import WebpackBundleAnalyzer from 'webpack-bundle-analyzer';
-import { buildCommonConfig } from './common';
+import { buildConfig as buildCommonConfig } from './common';
 import { Directories } from './interfaces/directories';
 
-export function buildProdConfig(directories: Directories): Configuration {
+export function buildConfig(directories: Directories): Configuration {
   process.env.NODE_ENV = 'production';
   const config = buildCommonConfig(directories);
 

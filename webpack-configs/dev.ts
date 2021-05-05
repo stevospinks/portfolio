@@ -1,8 +1,8 @@
 import { Configuration, DefinePlugin, HotModuleReplacementPlugin } from 'webpack';
-import { buildCommonConfig } from './common';
+import { buildConfig as buildCommonConfig } from './common';
 import { Directories } from './interfaces/directories';
 
-export function buildDevConfig(directories: Directories): Configuration {
+export function buildConfig(directories: Directories): Configuration {
   process.env.NODE_ENV = 'development';
   const config = buildCommonConfig(directories);
 
