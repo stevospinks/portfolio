@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 @import 'bootstrap/scss/bootstrap.scss';
-@import 'mixins.scss';
-@import 'variables.scss';
+@import '../../common/scss/variables.scss';
 
 body {
   font-family: 'Quicksand', Helvetica, sans-serif;

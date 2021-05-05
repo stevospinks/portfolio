@@ -18,8 +18,8 @@ export function buildCommonConfig(directories: Directories): Configuration {
         patterns: [
           { from: 'src/.htaccess', to: '' },
           { from: 'src/favicon.ico', to: '' },
-          { from: 'src/images', to: 'images' },
-          { from: 'src/data', to: 'data' }
+          { from: 'src/assets/images', to: 'images' },
+          { from: 'src/assets/data', to: 'data' }
         ]
       }),
       new HtmlWebpackPlugin({

@@ -1,13 +1,13 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import '../css/App.scss';
-import { EmptyProps } from '../interfaces/empty';
-import { Project } from '../interfaces/project';
-import About from './About';
-import Contact from './Contact';
-import Header from './Header';
-import ProjectDetails from './ProjectDetails';
-import ProjectList from './ProjectList';
+import { EmptyProps } from '../../common/interfaces/empty';
+import { Project } from '../../common/interfaces/project';
+import About from '../About';
+import Contact from '../Contact';
+import Header from '../Header';
+import ProjectDetails from '../ProjectDetails';
+import ProjectList from '../ProjectList';
+import './style.scss';
 
 interface State {
   projectToDisplay?: Project;

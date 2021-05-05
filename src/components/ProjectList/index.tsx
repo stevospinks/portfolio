@@ -1,9 +1,9 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import '../css/ProjectList.scss';
-import { Project } from '../interfaces/project';
-import Loader from './Loader';
-import ProjectOverview from './ProjectOverview';
+import { Project } from '../../common/interfaces/project';
+import Loader from '../Loader';
+import ProjectOverview from '../ProjectOverview';
+import './style.scss';
 
 interface Props {
   setProject: (project: Project) => void;
@@ -19,7 +19,7 @@ class ProjectList extends React.Component<Props, State> {
   componentDidMount() {
     this.setState({ loadComplete: false });
     const timerId = setTimeout(() => this.handleLoadingError(), 5000);
-    fetch('./data/projects.json')
+    fetch('data/projects.json')
       .then((response: Response) => {
         return response.json();
       })
