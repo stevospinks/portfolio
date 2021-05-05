@@ -9,6 +9,10 @@ body {
   background-color: $color-background;
 }
 
+img {
+  image-rendering: -webkit-optimize-contrast; // Improve resized images in chrome
+}
+
 a {
   color: $color-white;
 
