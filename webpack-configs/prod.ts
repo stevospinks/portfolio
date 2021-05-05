@@ -1,25 +1,26 @@
-const purgecss = require('@fullhuman/postcss-purgecss');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const glob = require('glob');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
-const WebpackBundleAnalyzer = require('webpack-bundle-analyzer');
+import purgecss from '@fullhuman/postcss-purgecss';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import glob from 'glob';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { Configuration, DefinePlugin } from 'webpack';
+import WebpackBundleAnalyzer from 'webpack-bundle-analyzer';
+import { buildConfig as buildCommonConfig } from './common';
+import { Directories } from './interfaces/directories';
 
-process.env.NODE_ENV = 'production';
-
-function buildConfig(directories) {
-  var config = require('./common.js')(directories);
+export function buildConfig(directories: Directories): Configuration {
+  process.env.NODE_ENV = 'production';
+  const config = buildCommonConfig(directories);
 
   config.mode = 'production';
   config.devtool = 'source-map';
-  config.output.filename = 'bundle.[contenthash].js';
+  config.output!.filename = 'bundle.[contenthash].js';
 
-  config.plugins.push(
+  config.plugins!.push(
     new WebpackBundleAnalyzer.BundleAnalyzerPlugin({ analyzerMode: 'static' }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
     }),
-    new webpack.DefinePlugin({
+    new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) // This global makes sure React is built in prod mode.
     })
   );
@@ -41,9 +42,9 @@ function buildConfig(directories) {
     ]
   };
 
-  config.module.rules.push({
+  config.module!.rules!.push({
     test: /\.(s*)css$/,
-    include: directories.app,
+    include: directories.src,
     use: [
       MiniCssExtractPlugin.loader,
       {
@@ -55,7 +56,7 @@ function buildConfig(directories) {
         options: {
           sourceMap: true,
           postcssOptions: {
-            plugins: [purgecss({ content: glob.sync(`${directories.app}/**/*`, { nodir: true }) })]
+            plugins: [purgecss({ content: glob.sync(`${directories.src}/**/*`, { nodir: true }) })]
           }
         }
       },
@@ -68,5 +69,3 @@ function buildConfig(directories) {
 
   return config;
 }
-
-module.exports = buildConfig;
