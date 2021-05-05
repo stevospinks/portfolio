@@ -9,7 +9,7 @@ interface Args {
   prod?: string;
 }
 
-function buildConfig(args: Args): Configuration | undefined {
+function webpackConfig(args: Args): Configuration | undefined {
   const directories: Directories = {
     build: resolve(__dirname, './build'),
     src: resolve(__dirname, './src')
@@ -25,4 +25,4 @@ function buildConfig(args: Args): Configuration | undefined {
   }
 }
 
-export default buildConfig;
+export default webpackConfig;
