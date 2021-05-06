@@ -27,7 +27,7 @@ class ProjectOverview extends React.Component<Props, EmptyState> {
   render() {
     const project = this.props.project;
     return (
-      <div className='column col-md-6 col-sm-12'>
+      <div className='column col-xxl-4 col-xl-5 col-md-6 col-sm-6 col-10'>
         <div
           className={'card bg-dark border-light' + (project.details.length > 0 ? ' clickable' : '')}
           tabIndex={project.displayId}
