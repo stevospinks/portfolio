@@ -31,19 +31,9 @@ class Screenshot extends React.Component<Props, State> {
   }
 
   private loadScreenshot(): string {
-    if (!this.state?.screenshot) {
-      const valueJson = localStorage.getItem(this.localStorageName);
-
-      // No screenshot is processing, and one already exists, so use that.
-      if (valueJson) {
-        const valueObject = JSON.parse(valueJson) as LocalStorageObject;
-        const screenshotInDate = Date.now() - valueObject.timestamp < this.localStorageValidity;
-
-        // If it is out of date, but not going to be regenerated, display it anyway
-        if (screenshotInDate || !this.props.generateScreenshot) {
-          return valueObject.content;
-        }
-      }
+    const existingScreenshot = this.getScreenshotFromStorage();
+    if (existingScreenshot) {
+      return existingScreenshot;
     }
 
     if (!this.props.generateScreenshot) {
@@ -51,7 +41,10 @@ class Screenshot extends React.Component<Props, State> {
     }
 
     if (!this.state?.screenshotsTaken || this.state?.screenshotsTaken < this.props.screenshotCount) {
-      new Promise((resolve) => setTimeout(resolve, 100))
+      // Wait for the website to load if this is the first screenshot
+      const timeout = !this.state?.screenshotsTaken ? 1000 : 50;
+
+      new Promise((resolve) => setTimeout(resolve, timeout))
         .then(() => this.generateScreenshot())
         .catch((error) => console.error(error));
     }
@@ -64,6 +57,28 @@ class Screenshot extends React.Component<Props, State> {
     }
 
     return this.loadingScreenshot;
+  }
+
+  private getScreenshotFromStorage(): string | undefined {
+    if (this.state?.screenshot) {
+      // A screenshot is currently being processed
+      return;
+    }
+
+    const valueJson = localStorage.getItem(this.localStorageName);
+    if (!valueJson) {
+      // No screenshot in local storage
+      return;
+    }
+
+    const valueObject = JSON.parse(valueJson) as LocalStorageObject;
+    const screenshotInDate = Date.now() - valueObject.timestamp < this.localStorageValidity;
+    if (!screenshotInDate && this.props.generateScreenshot) {
+      // Screenshot is out of date and will be regenrated
+      return;
+    }
+
+    return valueObject.content;
   }
 
   private generateScreenshot(): void {
