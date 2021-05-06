@@ -22,14 +22,16 @@
     margin-left: 4px;
   }
 
-  .embed-responsive {
+  .ratio {
     @include display-flex();
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
-    .embed-responsive-item {
+    * {
       top: auto;
       bottom: auto;
+      left: auto;
       height: auto;
     }
   }

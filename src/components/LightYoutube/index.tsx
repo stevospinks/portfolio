@@ -26,8 +26,8 @@ class LightYoutube extends React.Component<Props, State> {
   displayFullYoutube() {
     const source = `https://www.youtube.com/embed/${this.props.videoId}?autoplay=1&modestbranding=1&rel=0`;
     return (
-      <div className='embed-responsive embed-responsive-16by9 rounded'>
-        <iframe className='embed-responsive-item' src={source} allowFullScreen />
+      <div className='ratio ratio-16x9'>
+        <iframe src={source} allowFullScreen className='rounded' />
       </div>
     );
   }
@@ -36,8 +36,8 @@ class LightYoutube extends React.Component<Props, State> {
     const source = `https://img.youtube.com/vi/${this.props.videoId}/sddefault.jpg`;
     return (
       <div className='light-youtube' onClick={() => this.showVideo()}>
-        <div className='embed-responsive embed-responsive-16by9 rounded'>
-          <img className='embed-responsive-item' src={source} />
+        <div className='ratio ratio-16x9 rounded'>
+          <img src={source} />
           <FontAwesomeIcon icon={faYoutube} className='play-button' />
           <FontAwesomeIcon icon={faPlay} className='play-button-centre' />
         </div>
