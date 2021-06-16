@@ -21,7 +21,16 @@ export function buildConfig(directories: Directories): Configuration {
   config.module!.rules!.push({
     test: /\.(s*)css$/,
     include: directories.src,
-    use: ['style-loader', 'css-loader', 'sass-loader']
+    use: [
+      'style-loader',
+      'css-loader',
+      {
+        loader: 'sass-loader',
+        options: {
+          sassOptions: { quietDeps: true }
+        }
+      }
+    ]
   });
 
   return config;
