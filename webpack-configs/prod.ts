@@ -62,7 +62,10 @@ export function buildConfig(directories: Directories): Configuration {
       },
       {
         loader: 'sass-loader',
-        options: { sourceMap: true }
+        options: {
+          sourceMap: true,
+          sassOptions: { quietDeps: true }
+        }
       }
     ]
   });
