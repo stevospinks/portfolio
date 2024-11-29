@@ -1,4 +1,5 @@
 import { Configuration, DefinePlugin, HotModuleReplacementPlugin } from 'webpack';
+import { Configuration as DevConfiguration } from 'webpack-dev-server';
 import { buildConfig as buildCommonConfig } from './common';
 import { Directories } from './interfaces/directories';
 
@@ -32,6 +33,9 @@ export function buildConfig(directories: Directories): Configuration {
       }
     ]
   });
+
+  const devConfig: DevConfiguration = { allowedHosts: ['all'] };
+  config.devServer = devConfig;
 
   return config;
 }
