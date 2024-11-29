@@ -1,6 +1,5 @@
 import domtoimage from 'dom-to-image';
-import React from 'react';
-import { hot } from 'react-hot-loader';
+import React, { ReactElement } from 'react';
 import { LocalStorageObject } from '../../common/interfaces/local-storage-object';
 
 interface Props {
@@ -18,9 +17,9 @@ interface State {
 class Screenshot extends React.Component<Props, State> {
   private readonly loadingScreenshot = 'images/loading-screenshot.jpg';
   private readonly localStorageName = `${this.props.id.toLowerCase().replace(' ', '-')}-screenshot`;
-  private readonly localStorageValidity = 24 * 60 * 60 * 1000; // 1 day in milliseconds
+  private readonly localStorageValidity = 1; // 24 * 60 * 60 * 1000; // 1 day in milliseconds
 
-  render() {
+  render(): ReactElement {
     const screenshot = this.loadScreenshot();
 
     if (!screenshot) {
@@ -74,7 +73,7 @@ class Screenshot extends React.Component<Props, State> {
     const valueObject = JSON.parse(valueJson) as LocalStorageObject;
     const screenshotInDate = Date.now() - valueObject.timestamp < this.localStorageValidity;
     if (!screenshotInDate && this.props.generateScreenshot) {
-      // Screenshot is out of date and will be regenrated
+      // Screenshot is out of date and will be regenerated
       return;
     }
 
@@ -117,4 +116,4 @@ class Screenshot extends React.Component<Props, State> {
   }
 }
 
-export default hot(module)(Screenshot);
+export default Screenshot;

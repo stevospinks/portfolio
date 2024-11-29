@@ -1,5 +1,4 @@
-import React from 'react';
-import { hot } from 'react-hot-loader';
+import React, { ReactElement } from 'react';
 import { EmptyState } from '../../common/interfaces/empty';
 import { Project } from '../../common/interfaces/project';
 import ProjectImage from '../ProjectImage';
@@ -24,7 +23,7 @@ class ProjectOverview extends React.Component<Props, EmptyState> {
     }
   }
 
-  render() {
+  render(): ReactElement {
     const project = this.props.project;
     return (
       <div className='column col-xxl-4 col-xl-5 col-md-6 col-sm-6 col-10'>
@@ -50,4 +49,4 @@ class ProjectOverview extends React.Component<Props, EmptyState> {
   }
 }
 
-export default hot(module)(ProjectOverview);
+export default ProjectOverview;

@@ -1,5 +1,4 @@
-import React from 'react';
-import { hot } from 'react-hot-loader';
+import React, { ReactElement } from 'react';
 import { Project } from '../../common/interfaces/project';
 import Loader from '../Loader';
 import ProjectOverview from '../ProjectOverview';
@@ -16,7 +15,7 @@ interface State {
 }
 
 class ProjectList extends React.Component<Props, State> {
-  componentDidMount() {
+  componentDidMount(): void {
     this.setState({ loadComplete: false });
     const timerId = setTimeout(() => this.handleLoadingError(), 5000);
     fetch('data/projects.json')
@@ -34,11 +33,11 @@ class ProjectList extends React.Component<Props, State> {
       });
   }
 
-  handleLoadingError() {
+  handleLoadingError(): void {
     this.setState({ loadComplete: true, errorDuringLoad: true });
   }
 
-  renderProjects() {
+  renderProjects(): ReactElement {
     return (
       <div className='row'>
         {this.state.projects
@@ -50,15 +49,15 @@ class ProjectList extends React.Component<Props, State> {
     );
   }
 
-  renderLoading() {
+  renderLoading(): ReactElement {
     return <Loader text='Loading projects...' />;
   }
 
-  renderError() {
+  renderError(): ReactElement {
     return <p>Something went wrong while loading projects, please try again later.</p>;
   }
 
-  render() {
+  render(): ReactElement {
     let content: JSX.Element;
     if (!this.state) {
       content = this.renderError();
@@ -74,4 +73,4 @@ class ProjectList extends React.Component<Props, State> {
   }
 }
 
-export default hot(module)(ProjectList);
+export default ProjectList;

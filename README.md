@@ -5,3 +5,7 @@
 A website listing the personal and university projects I've worked on.
 
 Written using React, Typescript, HTML and SCSS.
+
+## Developer info
+
+Using firebase: <https://firebase.google.com/docs/cli#sign-in-test-cli>

@@ -1,5 +1,4 @@
-import React from 'react';
-import { hot } from 'react-hot-loader';
+import React, { ReactElement } from 'react';
 import { EmptyState } from '../../common/interfaces/empty';
 import { Project } from '../../common/interfaces/project';
 import LightYoutube from '../LightYoutube';
@@ -12,7 +11,7 @@ interface Props {
 }
 
 class ProjectDetails extends React.Component<Props, EmptyState> {
-  render() {
+  render(): ReactElement {
     const project = this.props.project;
     return (
       <>
@@ -52,4 +51,4 @@ class ProjectDetails extends React.Component<Props, EmptyState> {
   }
 }
 
-export default hot(module)(ProjectDetails);
+export default ProjectDetails;

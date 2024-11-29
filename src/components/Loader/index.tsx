@@ -1,5 +1,4 @@
-import React from 'react';
-import { hot } from 'react-hot-loader';
+import React, { ReactElement } from 'react';
 import { EmptyState } from '../../common/interfaces/empty';
 import './style.scss';
 
@@ -8,7 +7,7 @@ interface Props {
 }
 
 class Loader extends React.Component<Props, EmptyState> {
-  render() {
+  render(): ReactElement {
     return (
       <>
         <div className='spinner-border text-light' role='status'></div>
@@ -18,4 +17,4 @@ class Loader extends React.Component<Props, EmptyState> {
   }
 }
 
-export default hot(module)(Loader);
+export default Loader;

@@ -1,5 +1,4 @@
-import React from 'react';
-import { hot } from 'react-hot-loader';
+import React, { ReactElement } from 'react';
 import { EmptyProps } from '../../common/interfaces/empty';
 import { Project } from '../../common/interfaces/project';
 import About from '../About';
@@ -14,15 +13,15 @@ interface State {
 }
 
 class App extends React.Component<EmptyProps, State> {
-  setProjectToDisplay(project: Project) {
+  setProjectToDisplay(project: Project): void {
     this.setState({ projectToDisplay: project });
   }
 
-  clearProject() {
+  clearProject(): void {
     this.setState({ projectToDisplay: undefined });
   }
 
-  displayAllProjects() {
+  displayAllProjects(): ReactElement {
     return (
       <>
         <About />
@@ -31,11 +30,11 @@ class App extends React.Component<EmptyProps, State> {
     );
   }
 
-  displaySingleProject(project: Project) {
+  displaySingleProject(project: Project): ReactElement {
     return <ProjectDetails project={project} goBack={() => this.clearProject()} />;
   }
 
-  render() {
+  render(): ReactElement {
     window.scrollTo(0, 0);
     const displayProject = this.state?.projectToDisplay ?? false;
 
@@ -49,4 +48,4 @@ class App extends React.Component<EmptyProps, State> {
   }
 }
 
-export default hot(module)(App);
+export default App;

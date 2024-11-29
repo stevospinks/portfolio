@@ -1,13 +1,12 @@
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { hot } from 'react-hot-loader';
+import React, { ReactElement } from 'react';
 import { EmptyProps, EmptyState } from '../../common/interfaces/empty';
 import './style.scss';
 
 class Contact extends React.Component<EmptyProps, EmptyState> {
-  render() {
+  render(): ReactElement {
     return (
       <div className='contact'>
         <p>
@@ -28,4 +27,4 @@ class Contact extends React.Component<EmptyProps, EmptyState> {
   }
 }
 
-export default hot(module)(Contact);
+export default Contact;
