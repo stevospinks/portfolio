@@ -19,9 +19,13 @@ class About extends React.Component<EmptyProps, EmptyState> {
           Full-stack software engineer with over {this.yearsExperience()} years&apos; experience, based in the East of
           England.
           <br />
-          BSc (Hons) Computer Games Development (1<sup key='none'>st</sup> Class).
+          BSc (Hons) Computer Games Development (1<sup key='none'>st</sup> Class), using C++.
           <br />
-          Currently working with C# (.Net &amp; .Net Core), React &amp; Angular.
+          <br />
+          Currently working with Angular &amp; TypeScript, with extensive previous experience of C# (.Net &amp; .Net
+          Core).
+          <br />
+          Always willing to learn new languages.
         </h4>
       </>
     );

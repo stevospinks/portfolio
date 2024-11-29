@@ -15,11 +15,11 @@
   {
     "id": 2,
     "displayId": 3,
-    "name": "A Mobile Game",
-    "blurb": "Coming soon",
+    "name": "Other Projects",
+    "blurb": "Coming soon...",
     "details": [],
     "videoSource": "",
-    "imageSource": "mobile-game-coming-soon.jpg"
+    "imageSource": "mobile-phone-coming-soon.jpg"
   },
   {
     "id": 3,
@@ -28,7 +28,7 @@
     "blurb": "Portfolio website, written using React",
     "details": [
       "This is my portfolio website, listing the personal and university projects I've worked on.",
-      "It’s written using React, TypeScript, HTML and SCSS. The source code can be found on my GitHub."
+      "It's written using React, TypeScript, HTML and SCSS. The source code can be found on my GitHub."
     ],
     "videoSource": "",
     "imageSource": "screenshot2"

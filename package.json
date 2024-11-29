@@ -1,19 +1,14 @@
 {
   "name": "portfolio",
-  "version": "5.2.1",
+  "version": "5.3.0",
   "description": "Stephen's portfolio",
   "main": "index.tsx",
   "scripts": {
-    "start:dev": "concurrently \"npm run #:serve:dev\" \"npm run #:launch-firefox:dev\"",
-    "start:prod": "npm run #:build:prod && concurrently \"npm run #:serve:prod\" \"npm run #:launch-firefox:prod\"",
-    "deploy": "npm run #:build:prod && firebase deploy --only hosting -m \"v%npm_package_version%\"",
-    "#:build:prod": "npm run #:clean-build-dir && webpack --env=prod",
-    "#:clean-build-dir": "if exist build rd /s /q build && mkdir build",
-    "#:launch-firefox": "start \"\" \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\"",
-    "#:launch-firefox:dev": "wait-on http://localhost:3000 && npm run #:launch-firefox -- \"http://localhost:3000\"",
-    "#:launch-firefox:prod": "wait-on http://localhost:3001 && npm run #:launch-firefox -- \"http://localhost:3001\"",
-    "#:serve:dev": "webpack serve --env=dev --port 3000",
-    "#:serve:prod": "http-server ./build -p 3001"
+    "start:dev": "webpack serve --env=dev --port 3000",
+    "start:prod": "npm run _build:prod && http-server ./build -p 3001",
+    "deploy": "npm run _build:prod && firebase deploy --only hosting -m \"v%npm_package_version%\"",
+    "_build:prod": "npm run _clean-build-dir && webpack --env=prod",
+    "_clean-build-dir": "rm -r -f build && mkdir build"
   },
   "repository": {
     "type": "git",
@@ -36,7 +31,7 @@
     "@types/react-dom": "^17.0.7",
     "@types/webpack": "^5.28.0",
     "@types/webpack-bundle-analyzer": "^4.4.0",
-    "@types/webpack-dev-server": "^3.11.4",
+    "@types/webpack-dev-server": "^4.7.1",
     "@typescript-eslint/eslint-plugin": "^4.26.1",
     "@typescript-eslint/parser": "^4.26.1",
     "babel-loader": "^8.2.2",
@@ -66,7 +61,7 @@
     "webpack": "^5.38.1",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "4.0.0-beta.3"
+    "webpack-dev-server": "^4.15.2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
