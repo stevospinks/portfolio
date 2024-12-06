@@ -1,5 +1,6 @@
-import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons/faGithubSquare';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin';
+import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons/faEnvelopeSquare';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { ReactElement } from 'react';
 import { EmptyProps, EmptyState } from '../../common/interfaces/empty';

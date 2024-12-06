@@ -1,5 +1,4 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import ESLintPlugin from 'eslint-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { Configuration } from 'webpack';
 import { Directories } from './interfaces/directories';
@@ -25,9 +24,6 @@ export function buildConfig(directories: Directories): Configuration {
       new HtmlWebpackPlugin({
         template: 'src/index.html'
       }),
-      new ESLintPlugin({
-        extensions: ['js', 'jsx', 'ts', 'tsx']
-      })
     ],
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
@@ -41,9 +37,6 @@ export function buildConfig(directories: Directories): Configuration {
           include: directories.src,
           use: {
             loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']
-            }
           }
         },
         {

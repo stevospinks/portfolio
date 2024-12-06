@@ -1,7 +1,7 @@
-@import '../../common/scss/mixins.scss';
+@use '../../common/scss/mixins.scss';
 
 .avatar {
   padding-bottom: 1.5rem;
   width: 10rem;
-  @include filter(brightness(90%));
+  @include mixins.filter(brightness(90%));
 }

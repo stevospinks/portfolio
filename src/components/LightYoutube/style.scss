@@ -1,13 +1,13 @@
-@import '../../common/scss/mixins.scss';
-@import '../../common/scss/variables.scss';
+@use '../../common/scss/mixins.scss';
+@use '../../common/scss/variables.scss';
 
 .light-youtube {
-  color: $color-youtube-play;
+  color: variables.$color-youtube-play;
   cursor: pointer;
-  @include transition(0.3s all);
+  @include mixins.transition(0.3s all);
 
   &:hover {
-    color: $color-youtube-play-hover;
+    color: variables.$color-youtube-play-hover;
   }
 
   .play-button {
@@ -25,7 +25,7 @@
   }
 
   .ratio {
-    @include display-flex();
+    @include mixins.display-flex();
     justify-content: center;
     align-items: center;
     overflow: hidden;

@@ -1,12 +1,12 @@
+@use '../../common/scss/variables.scss';
+@use 'bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
-@import 'bootstrap/scss/bootstrap.scss';
-@import '../../common/scss/variables.scss';
 
 body {
   font-family: 'Quicksand', Helvetica, sans-serif;
-  color: $color-white;
+  color: variables.$color-white;
   text-align: center;
-  background-color: $color-background;
+  background-color: variables.$color-background;
 }
 
 img {
@@ -14,9 +14,9 @@ img {
 }
 
 a {
-  color: $color-white;
+  color: variables.$color-white;
 
   &:hover {
-    color: $color-white;
+    color: variables.$color-white;
   }
 }

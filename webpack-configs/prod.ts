@@ -1,6 +1,6 @@
 import purgecss from '@fullhuman/postcss-purgecss';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import glob from 'glob';
+import { globSync } from 'glob';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { Configuration, DefinePlugin } from 'webpack';
 import WebpackBundleAnalyzer from 'webpack-bundle-analyzer';
@@ -12,7 +12,6 @@ export function buildConfig(directories: Directories): Configuration {
   const config = buildCommonConfig(directories);
 
   config.mode = 'production';
-  config.devtool = 'source-map';
   config.output!.filename = 'bundle.[contenthash].js';
 
   config.plugins!.push(
@@ -28,7 +27,7 @@ export function buildConfig(directories: Directories): Configuration {
   config.optimization = {
     minimize: true,
     minimizer: [
-      `...`, // extends existing minimizers (i.e. `terser-webpack-plugin`)
+      `...`, // extends existing minimizers
       new CssMinimizerPlugin({
         minimizerOptions: {
           preset: [
@@ -47,23 +46,18 @@ export function buildConfig(directories: Directories): Configuration {
     include: directories.src,
     use: [
       MiniCssExtractPlugin.loader,
-      {
-        loader: 'css-loader',
-        options: { sourceMap: true }
-      },
+      'css-loader',
       {
         loader: 'postcss-loader',
         options: {
-          sourceMap: true,
           postcssOptions: {
-            plugins: [purgecss({ content: glob.sync(`${directories.src}/**/*`, { nodir: true }) })]
+            plugins: [purgecss({ content: globSync(`${directories.src}/**/*`, { nodir: true }) })]
           }
         }
       },
       {
         loader: 'sass-loader',
         options: {
-          sourceMap: true,
           sassOptions: { quietDeps: true }
         }
       }
