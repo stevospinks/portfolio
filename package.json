@@ -19,6 +19,9 @@
   },
   "author": "Stephen Spinks",
   "license": "ISC",
+  "browserslist": [
+    "defaults and fully supports es6-module"
+  ],
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/eslint-parser": "^7.25.9",
