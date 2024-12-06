@@ -39,7 +39,7 @@ class ProjectList extends React.Component<Props, State> {
 
   renderProjects(): ReactElement {
     return (
-      <div className='row'>
+      <div className="row">
         {this.state.projects
           .sort((a, b) => a.displayId - b.displayId)
           .map((project) => (
@@ -50,7 +50,7 @@ class ProjectList extends React.Component<Props, State> {
   }
 
   renderLoading(): ReactElement {
-    return <Loader text='Loading projects...' />;
+    return <Loader text="Loading projects..." />;
   }
 
   renderError(): ReactElement {
@@ -69,7 +69,7 @@ class ProjectList extends React.Component<Props, State> {
       content = this.renderProjects();
     }
 
-    return <div className='projectList'>{content}</div>;
+    return <div className="projectList">{content}</div>;
   }
 }
 

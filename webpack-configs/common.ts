@@ -10,7 +10,7 @@ export function buildConfig(directories: Directories): Configuration {
     output: {
       publicPath: '',
       path: directories.build,
-      pathinfo: false
+      pathinfo: false,
     },
     plugins: [
       new CopyWebpackPlugin({
@@ -18,17 +18,17 @@ export function buildConfig(directories: Directories): Configuration {
           { from: 'src/.htaccess', to: '' },
           { from: 'src/favicon.ico', to: '' },
           { from: 'src/assets/images', to: 'images' },
-          { from: 'src/assets/data', to: 'data' }
-        ]
+          { from: 'src/assets/data', to: 'data' },
+        ],
       }),
       new HtmlWebpackPlugin({
-        template: 'src/index.html'
+        template: 'src/index.html',
       }),
     ],
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
       symlinks: false,
-      cacheWithContext: false
+      cacheWithContext: false,
     },
     module: {
       rules: [
@@ -37,7 +37,7 @@ export function buildConfig(directories: Directories): Configuration {
           include: directories.src,
           use: {
             loader: 'babel-loader',
-          }
+          },
         },
         {
           test: /\.(png|jp(e*)g)$/,
@@ -46,12 +46,12 @@ export function buildConfig(directories: Directories): Configuration {
             {
               loader: 'url-loader',
               options: {
-                limit: 8192 // 8kb
-              }
-            }
-          ]
-        }
-      ]
-    }
+                limit: 8192, // 8kb
+              },
+            },
+          ],
+        },
+      ],
+    },
   };
 }

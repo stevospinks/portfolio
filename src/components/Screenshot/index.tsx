@@ -39,7 +39,10 @@ class Screenshot extends React.Component<Props, State> {
       return '';
     }
 
-    if (!this.state?.screenshotsTaken || this.state?.screenshotsTaken < this.props.screenshotCount) {
+    if (
+      !this.state?.screenshotsTaken ||
+      this.state?.screenshotsTaken < this.props.screenshotCount
+    ) {
       // Wait for the website to load if this is the first screenshot
       const timeout = !this.state?.screenshotsTaken ? 1000 : 50;
 
@@ -50,7 +53,10 @@ class Screenshot extends React.Component<Props, State> {
 
     if (this.state?.screenshot) {
       // Save the screenshot for use in the rest of the session
-      const valueObject: LocalStorageObject = { timestamp: Date.now(), content: this.state.screenshot };
+      const valueObject: LocalStorageObject = {
+        timestamp: Date.now(),
+        content: this.state.screenshot,
+      };
       localStorage.setItem(this.localStorageName, JSON.stringify(valueObject));
       return this.state.screenshot;
     }
@@ -107,7 +113,7 @@ class Screenshot extends React.Component<Props, State> {
           canvas16by9Context.drawImage(img, cropX, cropY);
           this.setState({
             screenshot: canvas16by9.toDataURL(),
-            screenshotsTaken: this.state?.screenshotsTaken ? this.state.screenshotsTaken + 1 : 1
+            screenshotsTaken: this.state?.screenshotsTaken ? this.state.screenshotsTaken + 1 : 1,
           });
         };
         img.src = dataUrl;

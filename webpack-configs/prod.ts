@@ -17,11 +17,11 @@ export function buildConfig(directories: Directories): Configuration {
   config.plugins!.push(
     new WebpackBundleAnalyzer.BundleAnalyzerPlugin({ analyzerMode: 'static' }),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css'
+      filename: '[name].[contenthash].css',
     }),
     new DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) // This global makes sure React is built in prod mode.
-    })
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV), // This global makes sure React is built in prod mode.
+    }),
   );
 
   config.optimization = {
@@ -33,12 +33,12 @@ export function buildConfig(directories: Directories): Configuration {
           preset: [
             'default',
             {
-              discardComments: { removeAll: true }
-            }
-          ]
-        }
-      })
-    ]
+              discardComments: { removeAll: true },
+            },
+          ],
+        },
+      }),
+    ],
   };
 
   config.module!.rules!.push({
@@ -51,17 +51,17 @@ export function buildConfig(directories: Directories): Configuration {
         loader: 'postcss-loader',
         options: {
           postcssOptions: {
-            plugins: [purgecss({ content: globSync(`${directories.src}/**/*`, { nodir: true }) })]
-          }
-        }
+            plugins: [purgecss({ content: globSync(`${directories.src}/**/*`, { nodir: true }) })],
+          },
+        },
       },
       {
         loader: 'sass-loader',
         options: {
-          sassOptions: { quietDeps: true }
-        }
-      }
-    ]
+          sassOptions: { quietDeps: true },
+        },
+      },
+    ],
   });
 
   return config;

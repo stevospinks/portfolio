@@ -9,18 +9,33 @@ import './style.scss';
 class Contact extends React.Component<EmptyProps, EmptyState> {
   render(): ReactElement {
     return (
-      <div className='contact'>
+      <div className="contact">
         <p>
           Contact Me:
           <br />
-          <a href='https://github.com/stevospinks' target='_blank' rel='noopener noreferrer' className='icon'>
-            <FontAwesomeIcon icon={faGithubSquare} title='GitHub' />
+          <a
+            href="https://github.com/stevospinks"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="icon"
+          >
+            <FontAwesomeIcon icon={faGithubSquare} title="GitHub" />
           </a>
-          <a href='https://www.linkedin.com/in/sspinks' target='_blank' rel='noopener noreferrer' className='icon'>
-            <FontAwesomeIcon icon={faLinkedin} title='LinkedIn' />
+          <a
+            href="https://www.linkedin.com/in/sspinks"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="icon"
+          >
+            <FontAwesomeIcon icon={faLinkedin} title="LinkedIn" />
           </a>
-          <a href='mailto:stephen@stephenspinks.com' target='_blank' rel='noopener noreferrer' className='icon'>
-            <FontAwesomeIcon icon={faEnvelopeSquare} title='Direct E-mail' />
+          <a
+            href="mailto:stephen@stephenspinks.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="icon"
+          >
+            <FontAwesomeIcon icon={faEnvelopeSquare} title="Direct E-mail" />
           </a>
         </p>
       </div>

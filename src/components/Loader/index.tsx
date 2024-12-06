@@ -10,8 +10,8 @@ class Loader extends React.Component<Props, EmptyState> {
   render(): ReactElement {
     return (
       <>
-        <div className='spinner-border text-light' role='status'></div>
-        <div className='loaderText'>{this.props.text}</div>
+        <div className="spinner-border text-light" role="status"></div>
+        <div className="loaderText">{this.props.text}</div>
       </>
     );
   }

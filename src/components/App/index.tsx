@@ -39,9 +39,11 @@ class App extends React.Component<EmptyProps, State> {
     const displayProject = this.state?.projectToDisplay ?? false;
 
     return (
-      <div className='container-md'>
+      <div className="container-md">
         <Header />
-        {displayProject ? this.displaySingleProject(this.state.projectToDisplay!) : this.displayAllProjects()}
+        {displayProject
+          ? this.displaySingleProject(this.state.projectToDisplay!)
+          : this.displayAllProjects()}
         <Contact />
       </div>
     );
