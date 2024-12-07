@@ -12,7 +12,7 @@ interface Args {
 function webpackConfig(args: Args): Configuration | undefined {
   const directories: Directories = {
     build: resolve(__dirname, './build'),
-    src: resolve(__dirname, './src')
+    src: resolve(__dirname, './src'),
   };
 
   if (args.dev) {

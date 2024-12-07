@@ -1,4 +1,4 @@
-@import '../../common/scss/variables.scss';
+@use '../../common/scss/variables.scss';
 
 .clickable:hover {
   cursor: pointer;
@@ -10,5 +10,5 @@
 }
 
 .card-img-top {
-  background-color: $color-background;
+  background-color: variables.$color-background;
 }

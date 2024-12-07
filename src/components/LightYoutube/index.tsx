@@ -1,8 +1,7 @@
-import { faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons/faYoutube';
+import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { hot } from 'react-hot-loader';
+import React, { ReactElement } from 'react';
 import './style.scss';
 
 interface Props {
@@ -19,33 +18,33 @@ class LightYoutube extends React.Component<Props, State> {
     this.state = { loadVideo: false };
   }
 
-  showVideo() {
+  showVideo(): void {
     this.setState({ loadVideo: true });
   }
 
-  displayFullYoutube() {
+  displayFullYoutube(): ReactElement {
     const source = `https://www.youtube.com/embed/${this.props.videoId}?autoplay=1&modestbranding=1&rel=0`;
     return (
-      <div className='ratio ratio-16x9'>
-        <iframe src={source} allowFullScreen className='rounded' />
+      <div className="ratio ratio-16x9">
+        <iframe src={source} allowFullScreen className="rounded" />
       </div>
     );
   }
 
-  displayLightYoutube() {
+  displayLightYoutube(): ReactElement {
     const source = `https://img.youtube.com/vi/${this.props.videoId}/sddefault.jpg`;
     return (
-      <div className='light-youtube' onClick={() => this.showVideo()}>
-        <div className='ratio ratio-16x9 rounded'>
+      <div className="light-youtube" onClick={() => this.showVideo()}>
+        <div className="ratio ratio-16x9 rounded">
           <img src={source} />
-          <FontAwesomeIcon icon={faYoutube} className='play-button' />
-          <FontAwesomeIcon icon={faPlay} className='play-button-centre' />
+          <FontAwesomeIcon icon={faYoutube} className="play-button" />
+          <FontAwesomeIcon icon={faPlay} className="play-button-centre" />
         </div>
       </div>
     );
   }
 
-  render() {
+  render(): ReactElement {
     if (this.state.loadVideo) {
       return this.displayFullYoutube();
     }
@@ -54,4 +53,4 @@ class LightYoutube extends React.Component<Props, State> {
   }
 }
 
-export default hot(module)(LightYoutube);
+export default LightYoutube;

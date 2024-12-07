@@ -1,6 +1,5 @@
 import domtoimage from 'dom-to-image';
-import React from 'react';
-import { hot } from 'react-hot-loader';
+import React, { ReactElement } from 'react';
 import { LocalStorageObject } from '../../common/interfaces/local-storage-object';
 
 interface Props {
@@ -20,7 +19,7 @@ class Screenshot extends React.Component<Props, State> {
   private readonly localStorageName = `${this.props.id.toLowerCase().replace(' ', '-')}-screenshot`;
   private readonly localStorageValidity = 24 * 60 * 60 * 1000; // 1 day in milliseconds
 
-  render() {
+  render(): ReactElement {
     const screenshot = this.loadScreenshot();
 
     if (!screenshot) {
@@ -40,7 +39,10 @@ class Screenshot extends React.Component<Props, State> {
       return '';
     }
 
-    if (!this.state?.screenshotsTaken || this.state?.screenshotsTaken < this.props.screenshotCount) {
+    if (
+      !this.state?.screenshotsTaken ||
+      this.state?.screenshotsTaken < this.props.screenshotCount
+    ) {
       // Wait for the website to load if this is the first screenshot
       const timeout = !this.state?.screenshotsTaken ? 1000 : 50;
 
@@ -51,7 +53,10 @@ class Screenshot extends React.Component<Props, State> {
 
     if (this.state?.screenshot) {
       // Save the screenshot for use in the rest of the session
-      const valueObject: LocalStorageObject = { timestamp: Date.now(), content: this.state.screenshot };
+      const valueObject: LocalStorageObject = {
+        timestamp: Date.now(),
+        content: this.state.screenshot,
+      };
       localStorage.setItem(this.localStorageName, JSON.stringify(valueObject));
       return this.state.screenshot;
     }
@@ -74,7 +79,7 @@ class Screenshot extends React.Component<Props, State> {
     const valueObject = JSON.parse(valueJson) as LocalStorageObject;
     const screenshotInDate = Date.now() - valueObject.timestamp < this.localStorageValidity;
     if (!screenshotInDate && this.props.generateScreenshot) {
-      // Screenshot is out of date and will be regenrated
+      // Screenshot is out of date and will be regenerated
       return;
     }
 
@@ -108,7 +113,7 @@ class Screenshot extends React.Component<Props, State> {
           canvas16by9Context.drawImage(img, cropX, cropY);
           this.setState({
             screenshot: canvas16by9.toDataURL(),
-            screenshotsTaken: this.state?.screenshotsTaken ? this.state.screenshotsTaken + 1 : 1
+            screenshotsTaken: this.state?.screenshotsTaken ? this.state.screenshotsTaken + 1 : 1,
           });
         };
         img.src = dataUrl;
@@ -117,4 +122,4 @@ class Screenshot extends React.Component<Props, State> {
   }
 }
 
-export default hot(module)(Screenshot);
+export default Screenshot;

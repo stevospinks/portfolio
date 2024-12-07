@@ -1,5 +1,4 @@
-import React from 'react';
-import { hot } from 'react-hot-loader';
+import React, { ReactElement } from 'react';
 import { EmptyState } from '../../common/interfaces/empty';
 import Screenshot from '../Screenshot';
 
@@ -11,7 +10,7 @@ interface Props {
 }
 
 class ProjectImage extends React.Component<Props, EmptyState> {
-  render() {
+  render(): ReactElement {
     if (this.props.imageSource.startsWith('screenshot')) {
       const screenshotCount = Number.parseInt(this.props.imageSource.replace('screenshot', ''));
       return (
@@ -24,8 +23,13 @@ class ProjectImage extends React.Component<Props, EmptyState> {
       );
     }
 
-    return <img className={this.props.className} src={`images/project-images/${this.props.imageSource}`} />;
+    return (
+      <img
+        className={this.props.className}
+        src={`images/project-images/${this.props.imageSource}`}
+      />
+    );
   }
 }
 
-export default hot(module)(ProjectImage);
+export default ProjectImage;

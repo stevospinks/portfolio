@@ -1,18 +1,19 @@
-@import '../../common/scss/mixins.scss';
-@import '../../common/scss/variables.scss';
+@use '../../common/scss/mixins.scss';
+@use '../../common/scss/variables.scss';
 
 .light-youtube {
-  color: $color-youtube-play;
+  color: variables.$color-youtube-play;
   cursor: pointer;
-  @include transition(0.3s all);
+  @include mixins.transition(0.3s all);
 
   &:hover {
-    color: $color-youtube-play-hover;
+    color: variables.$color-youtube-play-hover;
   }
 
   .play-button {
     font-size: 72px;
     position: absolute;
+    width: 1.125em;
   }
 
   .play-button-centre {
@@ -20,10 +21,11 @@
     font-size: 24px;
     position: absolute;
     margin-left: 4px;
+    width: 0.875em;
   }
 
   .ratio {
-    @include display-flex();
+    @include mixins.display-flex();
     justify-content: center;
     align-items: center;
     overflow: hidden;

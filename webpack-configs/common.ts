@@ -1,5 +1,4 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import ESLintPlugin from 'eslint-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { Configuration } from 'webpack';
 import { Directories } from './interfaces/directories';
@@ -11,7 +10,7 @@ export function buildConfig(directories: Directories): Configuration {
     output: {
       publicPath: '',
       path: directories.build,
-      pathinfo: false
+      pathinfo: false,
     },
     plugins: [
       new CopyWebpackPlugin({
@@ -19,20 +18,17 @@ export function buildConfig(directories: Directories): Configuration {
           { from: 'src/.htaccess', to: '' },
           { from: 'src/favicon.ico', to: '' },
           { from: 'src/assets/images', to: 'images' },
-          { from: 'src/assets/data', to: 'data' }
-        ]
+          { from: 'src/assets/data', to: 'data' },
+        ],
       }),
       new HtmlWebpackPlugin({
-        template: 'src/index.html'
+        template: 'src/index.html',
       }),
-      new ESLintPlugin({
-        extensions: ['js', 'jsx', 'ts', 'tsx']
-      })
     ],
     resolve: {
-      extensions: ['.tsx', '.ts', '.js'],
+      extensions: ['.tsx', '.ts', '.jsx', '.js'],
       symlinks: false,
-      cacheWithContext: false
+      cacheWithContext: false,
     },
     module: {
       rules: [
@@ -41,10 +37,7 @@ export function buildConfig(directories: Directories): Configuration {
           include: directories.src,
           use: {
             loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']
-            }
-          }
+          },
         },
         {
           test: /\.(png|jp(e*)g)$/,
@@ -53,12 +46,12 @@ export function buildConfig(directories: Directories): Configuration {
             {
               loader: 'url-loader',
               options: {
-                limit: 8192 // 8kb
-              }
-            }
-          ]
-        }
-      ]
-    }
+                limit: 8192, // 8kb
+              },
+            },
+          ],
+        },
+      ],
+    },
   };
 }

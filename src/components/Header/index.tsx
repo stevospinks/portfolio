@@ -1,12 +1,11 @@
-import React from 'react';
-import { hot } from 'react-hot-loader';
+import React, { ReactElement } from 'react';
 import { EmptyProps, EmptyState } from '../../common/interfaces/empty';
 import './style.scss';
 
 class Header extends React.Component<EmptyProps, EmptyState> {
-  render() {
+  render(): ReactElement {
     return <h1>Stephen Spinks</h1>;
   }
 }
 
-export default hot(module)(Header);
+export default Header;
