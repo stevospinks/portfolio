@@ -1,4 +1,3 @@
-import ESLintPlugin from 'eslint-webpack-plugin';
 import { Configuration, DefinePlugin } from 'webpack';
 import { Configuration as DevConfiguration } from 'webpack-dev-server';
 import { buildConfig as buildCommonConfig } from './common';
@@ -16,10 +15,6 @@ export function buildConfig(directories: Directories): Configuration {
   config.plugins!.push(
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV), // This global makes sure React is built in dev mode.
-    }),
-    new ESLintPlugin({
-      extensions: ['js', 'jsx', 'ts', 'tsx'],
-      configType: 'flat',
     }),
   );
 

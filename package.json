@@ -9,9 +9,10 @@
     "deploy": "npm run _build:prod && firebase deploy --only hosting -m \"v%npm_package_version%\"",
     "_build:prod": "npm run _clean-build-dir && webpack --env=prod",
     "_clean-build-dir": "rm -r -f build && mkdir build",
-    "lint": "eslint src",
+    "lint": "eslint",
     "prettier:check": "prettier . --check",
-    "prettier:fix": "prettier . --write"
+    "prettier:fix": "prettier . --write",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -45,11 +46,11 @@
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
     "eslint": "^9.16.0",
-    "eslint-webpack-plugin": "^4.2.0",
     "glob": "^11.0.0",
     "globals": "^15.13.0",
     "html-webpack-plugin": "^5.3.1",
     "http-server": "^14.1.1",
+    "husky": "^9.1.7",
     "mini-css-extract-plugin": "^2.9.2",
     "postcss": "^8.3.2",
     "postcss-loader": "^8.1.1",

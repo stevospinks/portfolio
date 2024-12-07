@@ -26,7 +26,7 @@ export function buildConfig(directories: Directories): Configuration {
       }),
     ],
     resolve: {
-      extensions: ['.tsx', '.ts', '.js'],
+      extensions: ['.tsx', '.ts', '.jsx', '.js'],
       symlinks: false,
       cacheWithContext: false,
     },
