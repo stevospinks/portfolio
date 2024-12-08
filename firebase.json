@@ -1,6 +1,33 @@
 {
   "hosting": {
     "public": "build",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "headers": [
+      {
+        "source": "**/*",
+        "headers": [
+          {
+            "key": "X-Frame-Options",
+            "value": "DENY"
+          },
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "same-origin"
+          },
+          {
+            "key": "Permissions-Policy",
+            "value": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+          },
+          {
+            "key": "Content-Security-Policy",
+            "value": "default-src 'self'; style-src 'unsafe-inline' 'self' fonts.googleapis.com; img-src 'self' img.youtube.com data:; font-src fonts.gstatic.com; frame-src www.youtube.com"
+          }
+        ]
+      }
+    ]
   }
 }

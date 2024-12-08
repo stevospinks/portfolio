@@ -9,3 +9,8 @@ Written using React, Typescript, HTML and SCSS.
 ## Developer info
 
 Using firebase: <https://firebase.google.com/docs/cli#sign-in-test-cli>
+
+### Security check
+
+Headers: <https://securityheaders.com/?q=stephenspinks.com&hide=on&followRedirects=on>
+SSL Test: <https://www.ssllabs.com/ssltest/analyze.html?d=stephenspinks.com&hideResults=on&latest>
