@@ -3,6 +3,7 @@
 ####################
 .firebase
 build
+.DS_Store
 
 #####################################################################################
 # https://github.com/github/gitignore/blob/master/Global/VisualStudioCode.gitignore #
