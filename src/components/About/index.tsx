@@ -15,16 +15,29 @@ class About extends React.Component<EmptyProps, EmptyState> {
       <>
         <img className="img-fluid rounded avatar" src="images/avatar.png" />
         <h4>
-          Full-stack software engineer with over {this.yearsExperience()} years&apos; experience,
-          based in the East of England.
+          Full-stack senior software engineer with over {this.yearsExperience()} years&apos;
+          professional experience, based in the East of England.
           <br />
-          BSc (Hons) Computer Games Development (1<sup key="none">st</sup> Class), using C++.
+          BSc (Hons) in Computer Games Development (1<sup key="none">st</sup> Class), using C++.
+          <br />
+          A quick learner, highly capable, and enthusiastic about adopting new technologies.
           <br />
           <br />
-          Currently working with Angular &amp; TypeScript, with extensive previous experience of C#
-          (.Net &amp; .Net Core).
+          In-depth knowledge across the Microsoft .NET stack, complemented by frontend technologies
+          such as Angular 2+, TypeScript, HTML, and CSS. Demonstrable success in software
+          development, implementing unit and integration testing, and delivering performance
+          improvements.
           <br />
-          Always willing to learn new languages.
+          <br />
+          Extensive experience in agile methodologies, including the facilitation of Scrum
+          ceremonies such as stand-ups, task breakdowns, retrospectives, and product demonstrations.
+          Previously certified as a Scrum Master with the Scrum Alliance.
+          <br />
+          <br />
+          Demonstrated ability to mentor and support developers, focusing on both technical
+          progression and career development. Skilled in stakeholder engagement, with experience of
+          working in customer-facing roles and effectively communicating complex technical concepts
+          to audiences with varying levels of expertise.
         </h4>
       </>
     );
