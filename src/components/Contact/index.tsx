@@ -9,18 +9,10 @@ import './style.scss';
 class Contact extends React.Component<EmptyProps, EmptyState> {
   render(): React.JSX.Element {
     return (
-      <div className="contact">
+      <div className="contact fa-width-auto">
         <p>
           Contact Me:
           <br />
-          <a
-            href="https://github.com/stevospinks"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="icon"
-          >
-            <FontAwesomeIcon icon={faGithubSquare} title="GitHub" />
-          </a>
           <a
             href="https://www.linkedin.com/in/sspinks"
             target="_blank"
@@ -36,6 +28,14 @@ class Contact extends React.Component<EmptyProps, EmptyState> {
             className="icon"
           >
             <FontAwesomeIcon icon={faEnvelopeSquare} title="Direct E-mail" />
+          </a>
+          <a
+            href="https://github.com/stevospinks"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="icon"
+          >
+            <FontAwesomeIcon icon={faGithubSquare} title="GitHub" />
           </a>
         </p>
       </div>
