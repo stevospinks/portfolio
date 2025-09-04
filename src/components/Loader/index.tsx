@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { EmptyState } from '../../common/interfaces/empty';
 import './style.scss';
 
@@ -7,7 +7,7 @@ interface Props {
 }
 
 class Loader extends React.Component<Props, EmptyState> {
-  render(): ReactElement {
+  render(): React.JSX.Element {
     return (
       <>
         <div className="spinner-border text-light" role="status"></div>

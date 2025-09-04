@@ -2,12 +2,12 @@ import { faGithubSquare } from '@fortawesome/free-brands-svg-icons/faGithubSquar
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin';
 import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons/faEnvelopeSquare';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { EmptyProps, EmptyState } from '../../common/interfaces/empty';
 import './style.scss';
 
 class Contact extends React.Component<EmptyProps, EmptyState> {
-  render(): ReactElement {
+  render(): React.JSX.Element {
     return (
       <div className="contact">
         <p>

@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { EmptyProps, EmptyState } from '../../common/interfaces/empty';
 import './style.scss';
 
 class Header extends React.Component<EmptyProps, EmptyState> {
-  render(): ReactElement {
+  render(): React.JSX.Element {
     return <h1>Stephen Spinks</h1>;
   }
 }
