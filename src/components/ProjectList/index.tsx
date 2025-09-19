@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react';
+import React, { ReactElement } from 'react';
 import { Project } from '../../common/interfaces/project';
 import Loader from '../Loader';
 import ProjectOverview from '../ProjectOverview';
@@ -37,7 +37,7 @@ class ProjectList extends React.Component<Props, State> {
     this.setState({ loadComplete: true, errorDuringLoad: true });
   }
 
-  renderProjects(): React.JSX.Element {
+  renderProjects(): ReactElement {
     return (
       <div className="row">
         {this.state.projects
@@ -49,15 +49,15 @@ class ProjectList extends React.Component<Props, State> {
     );
   }
 
-  renderLoading(): React.JSX.Element {
+  renderLoading(): ReactElement {
     return <Loader text="Loading projects..." />;
   }
 
-  renderError(): React.JSX.Element {
+  renderError(): ReactElement {
     return <p>Something went wrong while loading projects, please try again later.</p>;
   }
 
-  render(): React.JSX.Element {
+  render(): ReactElement {
     let content: JSX.Element;
     if (!this.state) {
       content = this.renderError();

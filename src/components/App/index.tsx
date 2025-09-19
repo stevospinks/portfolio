@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { EmptyProps } from '../../common/interfaces/empty';
 import { Project } from '../../common/interfaces/project';
 import About from '../About';
@@ -21,7 +21,7 @@ class App extends React.Component<EmptyProps, State> {
     this.setState({ projectToDisplay: undefined });
   }
 
-  displayAllProjects(): React.JSX.Element {
+  displayAllProjects(): ReactElement {
     return (
       <>
         <About />
@@ -30,17 +30,19 @@ class App extends React.Component<EmptyProps, State> {
     );
   }
 
-  displaySingleProject(project: Project): React.JSX.Element {
+  displaySingleProject(project: Project): ReactElement {
     return <ProjectDetails project={project} goBack={() => this.clearProject()} />;
   }
 
-  render(): React.JSX.Element {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  render(): ReactElement {
+    window.scrollTo(0, 0);
+    const displayProject = this.state?.projectToDisplay ?? false;
+
     return (
       <div className="container-md">
         <Header />
-        {this.state?.projectToDisplay
-          ? this.displaySingleProject(this.state.projectToDisplay)
+        {displayProject
+          ? this.displaySingleProject(this.state.projectToDisplay!)
           : this.displayAllProjects()}
         <Contact />
       </div>

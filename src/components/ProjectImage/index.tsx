@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { EmptyState } from '../../common/interfaces/empty';
 import Screenshot from '../Screenshot';
 
@@ -10,7 +10,7 @@ interface Props {
 }
 
 class ProjectImage extends React.Component<Props, EmptyState> {
-  render(): React.JSX.Element {
+  render(): ReactElement {
     if (this.props.imageSource.startsWith('screenshot')) {
       const screenshotCount = Number.parseInt(this.props.imageSource.replace('screenshot', ''));
       return (

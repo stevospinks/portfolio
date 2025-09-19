@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { EmptyState } from '../../common/interfaces/empty';
 import { Project } from '../../common/interfaces/project';
 import ProjectImage from '../ProjectImage';
@@ -23,7 +23,7 @@ class ProjectOverview extends React.Component<Props, EmptyState> {
     }
   }
 
-  render(): React.JSX.Element {
+  render(): ReactElement {
     const project = this.props.project;
     return (
       <div className="column col-xxl-4 col-xl-5 col-md-6 col-sm-6 col-10">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { EmptyProps, EmptyState } from '../../common/interfaces/empty';
 import './style.scss';
 
@@ -10,7 +10,7 @@ class About extends React.Component<EmptyProps, EmptyState> {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
-  render(): React.JSX.Element {
+  render(): ReactElement {
     return (
       <>
         <img className="img-fluid rounded avatar" src="images/avatar.png" />

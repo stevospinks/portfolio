@@ -1,5 +1,5 @@
 import domtoimage from 'dom-to-image';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { LocalStorageObject } from '../../common/interfaces/local-storage-object';
 
 interface Props {
@@ -19,7 +19,7 @@ class Screenshot extends React.Component<Props, State> {
   private readonly localStorageName = `${this.props.id.toLowerCase().replace(' ', '-')}-screenshot`;
   private readonly localStorageValidity = 24 * 60 * 60 * 1000; // 1 day in milliseconds
 
-  render(): React.JSX.Element {
+  render(): ReactElement {
     const screenshot = this.loadScreenshot();
 
     if (!screenshot) {
