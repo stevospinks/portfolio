@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { EmptyState } from '../../common/interfaces/empty';
 import { Project } from '../../common/interfaces/project';
 import LightYoutube from '../LightYoutube';
@@ -11,7 +11,7 @@ interface Props {
 }
 
 class ProjectDetails extends React.Component<Props, EmptyState> {
-  render(): ReactElement {
+  render(): React.JSX.Element {
     const project = this.props.project;
     return (
       <>
