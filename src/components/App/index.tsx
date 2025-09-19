@@ -35,14 +35,12 @@ class App extends React.Component<EmptyProps, State> {
   }
 
   render(): React.JSX.Element {
-    window.scrollTo(0, 0);
-    const displayProject = this.state?.projectToDisplay ?? false;
-
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     return (
       <div className="container-md">
         <Header />
-        {displayProject
-          ? this.displaySingleProject(this.state.projectToDisplay!)
+        {this.state?.projectToDisplay
+          ? this.displaySingleProject(this.state.projectToDisplay)
           : this.displayAllProjects()}
         <Contact />
       </div>
