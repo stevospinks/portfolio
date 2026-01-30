@@ -5,7 +5,7 @@ import About from '../About';
 import Contact from '../Contact';
 import Header from '../Header';
 import ProjectDetails from '../ProjectDetails';
-import ProjectList from '../ProjectList';
+// import ProjectList from '../ProjectList';
 import './style.scss';
 
 interface State {
@@ -25,7 +25,8 @@ class App extends React.Component<EmptyProps, State> {
     return (
       <>
         <About />
-        <ProjectList setProject={(project) => this.setProjectToDisplay(project)} />
+        {/* <ProjectList setProject={(project) => this.setProjectToDisplay(project)} /> */}
+        <div className="no-projects" />
       </>
     );
   }
